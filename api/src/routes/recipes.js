@@ -25,30 +25,38 @@ router.get("/recipes/:id", async (req, res) => {
   const allRecipes = await ctrl.getAllRecipes();
 
   if (uuid.length > 1) {
-    const findFood = allRecipes.find((el) => el.id === id);
-    findFood ? res.send(findFood) : res.status(404).send("Food doesn't exist");
-    return;
+    const findFood = await Recipe.findByPk(id);
+    return findFood ? res.send(findFood) : res.status(404).send("Food doesn't exist");
   }
   const parseId = parseInt(id);
   const findFood = allRecipes.find((el) => el.id === parseId);
-  findFood ? res.send(findFood) : res.status(404).send("Food doesn't exist");
+  return findFood ? res.send(findFood) : res.status(404).send("Food doesn't exist");
 });
 
 /*  POST RECIPE  */
 router.post("/recipe", async (req, res) => {
   const { name, summary, healthScore } = req.body;
+  const nameConvert = ctrl.nameConverter(name)
+  const parsedHealthScore = parseInt(healthScore)
   if (!name || !summary)
     return res.status(400).send("name and summary are required");
-  Recipe.create({
-    name,
+  const newRecipe = await Recipe.create({
+    name: nameConvert,
     summary,
-    healthScore,
+    healthScore: parsedHealthScore,
   });
   const recipeCreated = await Recipe.findOne({
-    where: { name: name },
+    where: { name: nameConvert },
   });
 
   res.send(recipeCreated);
 });
+
+/*  GET DATABASE DIETS  */
+router.get("/diets", async (req, res) => {
+  const dietTypes = await DietType.findAll()
+  res.send(dietTypes)
+})
+
 
 module.exports = router;
