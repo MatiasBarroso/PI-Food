@@ -19,15 +19,23 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
-const { DietType } = require("./src/db.js")
+const { DietType } = require("./src/db.js");
+
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-console
-    const preChargeDiets = ['gluten free', 'dairy free', "lacto ovo vegetarian",
-    "vegan", "paleolithic", "primal", "ketogenic", "pescetarian",
-    "whole 30"];
-    preChargeDiets.forEach(diet => DietType.create({ name: diet}))
-    
+    const preChargeDiets = [
+      "gluten free",
+      "dairy free",
+      "lacto ovo vegetarian",
+      "vegan",
+      "paleolithic",
+      "primal",
+      "ketogenic",
+      "pescetarian",
+      "whole 30",
+    ];
+    preChargeDiets.forEach((diet) => DietType.create({ name: diet }));
   });
 });

@@ -57,18 +57,7 @@ const getAllRecipes = async () => {
 
 const postRecipe = async () => {};
 
-const getDiets = async () => {
-  const apiRecipes = await getApiRecipes();
-  const dogsTemp = apiDogs.map((dog) => dog.temperament);
-  const separatesTemps = dogsTemp.toString().split(",");
-  separatesTemps.forEach((el) =>
-    Temperaments.findOrCreate({
-      where: { name: el.trim() },
-    })
-  );
-  const allTemperaments = await Temperaments.findAll();
-  return allTemperaments;
-};
+const getDiets = async () => {};
 
 /!*    SECONDARY FUNCTIONS    *!/;
 
