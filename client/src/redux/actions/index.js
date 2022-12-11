@@ -7,7 +7,7 @@ export const GET_DIETS = "GET_DIET";
 
 export const getAllRecipes = () => (dispatch) => {
   return axios("http://localhost:3001/recipes").then((data) => {
-    dispatch({ type: GET_ALL_RECIPES, payload: data });
+    dispatch({ type: GET_ALL_RECIPES, payload: data.data });
   });
 };
 

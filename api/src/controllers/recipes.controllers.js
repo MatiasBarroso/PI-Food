@@ -1,9 +1,7 @@
 const axios = require("axios");
 const { Recipe } = require("../db.js");
 require("dotenv").config();
-const { API_KEY } = process.env;
-
-const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100`;
+const { API_KEY4 } = process.env;
 
 /!*    AXIOS INSTANCE (CORRIGE PROBLEMAS EN LA CONFIG DE AXIOS)    *!/;
 
@@ -18,7 +16,7 @@ const recipesApi = axios.create({
 
 const getApiRecipes = async () => {
   const resAxios = await recipesApi(
-    `/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
+    `/complexSearch?apiKey=${API_KEY4}&addRecipeInformation=true&number=100`
   );
   const { results } = resAxios.data;
   const dataMap = results.map((el) => {
@@ -67,7 +65,6 @@ const getApiById = async (id) => {
             (data) => "step " + data.number.toString() + ": " + data.step
           )
         : [];
-
     return {
       id: data.id,
       name: data.title,

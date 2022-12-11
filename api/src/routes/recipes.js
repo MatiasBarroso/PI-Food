@@ -6,32 +6,9 @@ const router = express.Router();
 
 /*  ALL RECIPES  */
 
-// router.get("/", async (req, res) => {
-//   try {
-//     const { name } = req.query;
-//     const allRecipes = await ctrl.getAllRecipes();
-
-//     if (name) {
-//       const nameConvert = ctrl.nameConverter(name);
-//       const findFood = allRecipes.filter((el) => el.name.includes(nameConvert));
-//       return findFood
-//         ? res.send(findFood)
-//         : res.status(404).send("Food doesn't exist");
-//     }
-
-//     res.send(allRecipes);
-//   } catch (error) {
-//     res.status(404).send(error);
-//   }
-// });
-
-/*   PAGINATION   */
-
 router.get("/", async (req, res) => {
   try {
     const { name } = req.query;
-    const page = Number(req.query.page);
-    const limit = Number(req.query.limit);
     const allRecipes = await ctrl.getAllRecipes();
 
     if (name) {
@@ -41,22 +18,45 @@ router.get("/", async (req, res) => {
         ? res.send(findFood)
         : res.status(404).send("Food doesn't exist");
     }
-    if (page && limit) {
-      const pages = await pagination(page, limit);
-      return res.json(pages);
-    }
-    console.log(" despues de page && limit");
-    const home = allRecipes.slice(0, 8);
-    home.previous = {
-      page: page - 1,
-      limit: limit,
-    };
-    res.send(home);
+    res.send(allRecipes);
   } catch (error) {
-    console.log(error);
-    res.status(404).send("error");
+    res.status(404).send(error);
   }
 });
+
+/*   ALL RECIPES + PAGINATION   */
+
+// router.get("/", async (req, res) => {
+//   try {
+//     const { name, page, limit } = req.query;
+//     const allRecipes = await ctrl.getAllRecipes();
+//     if (name) {
+//       const nameConvert = ctrl.nameConverter(name);
+//       const findFood = allRecipes.filter((el) => el.name.includes(nameConvert));
+//       return findFood
+//         ? res.send(findFood)
+//         : res.status(404).send("Food doesn't exist");
+//     }
+//     if (page && limit) {
+//       const pages = await pagination(
+//         allRecipes,
+//         parseInt(page),
+//         parseInt(limit)
+//       );
+//       return res.json(pages);
+//     }
+//     let firstPage = {
+//       results: allRecipes.slice(0, 8),
+//     };
+//     firstPage.next = {
+//       page: 2,
+//       limit: 8,
+//     };
+//     res.send(firstPage);
+//   } catch (error) {
+//     res.status(404).send(error);
+//   }
+// });
 
 /*  GET RECIPE BY ID  */
 

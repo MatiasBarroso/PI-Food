@@ -1,7 +1,4 @@
-const ctrl = require("./recipes.controllers");
-
-const pagination = async (page, limit) => {
-  const allRecipes = await ctrl.getAllRecipes();
+const pagination = async (allRecipes, page, limit) => {
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
   const results = {};
@@ -14,7 +11,7 @@ const pagination = async (page, limit) => {
   }
   if (startIndex > 0) {
     results.next = {
-      page: page + 1,
+      page: parseInt(page) + 1,
       limit: limit,
     };
   }

@@ -18,3 +18,10 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+.container-pagination{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
