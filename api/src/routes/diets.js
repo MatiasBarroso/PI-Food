@@ -1,13 +1,16 @@
 const express = require("express");
-const { DietType } = require("../db.js");
 const ctrl = require("../controllers/diets.controllers");
 const router = express.Router();
 
 /*  GET DATABASE DIETS  */
 
-router.get("/diets", async (req, res) => {
-  const dietTypes = await DietType.findAll();
-  res.send(dietTypes);
+router.get("/", async (req, res) => {
+  try {
+    const diets = await ctrl.getDiets();
+    res.send(diets);
+  } catch (error) {
+    res.status(404).send(error);
+  }
 });
 
 module.exports = router;

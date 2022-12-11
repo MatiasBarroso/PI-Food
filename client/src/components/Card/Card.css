@@ -1,0 +1,10 @@
+.container-card{
+    margin:15px;
+    width:270px;
+    height:370px;
+    background-color: brown;
+}
+
+.img-card{
+    width:270px;
+}

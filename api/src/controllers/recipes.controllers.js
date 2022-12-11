@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Recipe, DietType } = require("../db.js");
+const { Recipe } = require("../db.js");
 require("dotenv").config();
 const { API_KEY } = process.env;
 
@@ -55,20 +55,38 @@ const getAllRecipes = async () => {
   return apiRecipes.concat(dbRecipes);
 };
 
-const postRecipe = async () => {};
+const getApiById = async (id) => {
+  const getApiRecipe = await recipesApi(
+    `/${id}/information?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
+  );
+  const { data } = getApiRecipe;
+  if (data) {
+    const stepByStep =
+      data.analyzedInstructions[0] && data.analyzedInstructions[0].steps
+        ? data.analyzedInstructions[0].steps.map(
+            (data) => "step " + data.number.toString() + ": " + data.step
+          )
+        : [];
 
-const getDiets = async () => {};
+    return {
+      id: data.id,
+      name: data.title,
+      summary: data.summary,
+      healthScore: data.healthScore,
+      stepByStep,
+      image: data.image,
+      diets: data.diets,
+      types: data.dishTypes,
+      score: data.spoonacularScore,
+    };
+  }
+
+  return [];
+};
 
 /!*    SECONDARY FUNCTIONS    *!/;
 
 const nameConverter = (str) => {
-  const arrName = str.split(" ");
-  if (arrName.length > 1) {
-    const arrMap = arrName.map(
-      (str) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
-    );
-    return arrMap.join(" ");
-  }
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };
 
@@ -76,6 +94,6 @@ module.exports = {
   getApiRecipes,
   getDbRecipes,
   getAllRecipes,
-  postRecipe,
+  getApiById,
   nameConverter,
 };

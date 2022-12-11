@@ -1,0 +1,12 @@
+.container-filters{
+    width: 15%;
+    height: 100vh;
+    background-color: antiquewhite;
+}
+
+.filters-title{
+    font-size: 50px;
+    text-align: center;
+    margin:0;
+    padding: 0;
+}

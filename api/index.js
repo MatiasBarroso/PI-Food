@@ -19,7 +19,7 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
-const { DietType } = require("./src/db.js");
+const { Diet } = require("./src/db.js");
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
@@ -36,6 +36,6 @@ conn.sync({ force: true }).then(() => {
       "pescetarian",
       "whole 30",
     ];
-    preChargeDiets.forEach((diet) => DietType.create({ name: diet }));
+    preChargeDiets.forEach((diet) => Diet.create({ name: diet }));
   });
 });

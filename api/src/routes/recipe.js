@@ -1,28 +1,38 @@
 const express = require("express");
 const ctrl = require("../controllers/recipes.controllers");
-const { Recipe } = require("../db.js");
+const { Recipe, Diet } = require("../db.js");
 const router = express.Router();
 
 /*  POST RECIPE  */
 router.post("/", async (req, res) => {
-  const { name, summary, healthScore } = req.body;
+  const { name, summary, healthScore, diets } = req.body;
   const parsedHealthScore = parseInt(healthScore);
-  if (!name || !summary)
-    return res.status(400).send("name and summary are required");
+  if (!name || !summary || !diets || !healthScore)
+    return res.status(400).send("All options are require");
   try {
     const nameConvert = ctrl.nameConverter(name);
-    await Recipe.create({
+    const newRecipe = await Recipe.create({
       name: nameConvert,
       summary,
       healthScore: parsedHealthScore,
     });
-    const recipeCreated = await Recipe.findOne({
-      where: { name: nameConvert },
+
+    const dietsTypes = await Diet.findAll({
+      where: { name: diets },
     });
 
-    res.send(recipeCreated);
+    const values = dietsTypes.map((diet) => diet.dataValues.id);
+    await newRecipe.setDiets(values);
+    const newRecipeDiets = await Recipe.findAll({
+      include: [
+        {
+          model: Diet,
+        },
+      ],
+    });
+    res.send(newRecipeDiets);
   } catch (error) {
-    res.status(400).send(error.parent.detail);
+    res.status(400).send("error");
   }
 });
 

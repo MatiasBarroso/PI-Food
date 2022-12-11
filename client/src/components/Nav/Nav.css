@@ -1,0 +1,12 @@
+.container-nav{
+    display:flex;
+    background-color: burlywood;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+}
+.nav-title{
+    margin: 0;
+    font-size: 50px;
+    text-align: center;
+}
