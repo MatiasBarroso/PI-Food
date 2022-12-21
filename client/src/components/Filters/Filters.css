@@ -10,3 +10,24 @@
     margin:0;
     padding: 0;
 }
+
+.checkbox-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin:0;
+}
+
+.checkbox-title{
+    margin: 0;
+    padding: 0;
+}
+
+[type=checkbox]{
+    transform: scale(0.7);
+    background-color: red;
+}
+
+[type=checkbox]:checked {
+    background: red;
+  }

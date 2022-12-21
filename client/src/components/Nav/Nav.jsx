@@ -1,4 +1,5 @@
 import React from 'react'
+import SearchBar from '../SearchBar/SearchBar';
 import "./Nav.css";
 
 const Nav = () => {
@@ -7,6 +8,7 @@ const Nav = () => {
         <h1 className='nav-title'>
             NAV
         </h1>
+        <SearchBar />
     </div>
   )
 }

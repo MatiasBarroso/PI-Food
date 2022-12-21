@@ -1,0 +1,10 @@
+.Home{
+    margin: 0;
+    padding: 0;
+    
+}
+
+.container-main-cards{
+    display: flex;
+    flex-direction: row;
+}

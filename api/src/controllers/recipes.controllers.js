@@ -1,7 +1,7 @@
 const axios = require("axios");
 const { Recipe } = require("../db.js");
 require("dotenv").config();
-const { API_KEY4 } = process.env;
+const { API_KEY2 } = process.env;
 
 /!*    AXIOS INSTANCE (CORRIGE PROBLEMAS EN LA CONFIG DE AXIOS)    *!/;
 
@@ -16,7 +16,7 @@ const recipesApi = axios.create({
 
 const getApiRecipes = async () => {
   const resAxios = await recipesApi(
-    `/complexSearch?apiKey=${API_KEY4}&addRecipeInformation=true&number=100`
+    `/complexSearch?apiKey=${API_KEY2}&addRecipeInformation=true&number=100`
   );
   const { results } = resAxios.data;
   const dataMap = results.map((el) => {
@@ -34,7 +34,7 @@ const getApiRecipes = async () => {
       healthScore: el.healthScore,
       stepByStep,
       image: el.image,
-      diets: el.diets,
+      diets: el.diets?.map((el) => nameConverter(el)),
       types: el.dishTypes,
       score: el.spoonacularScore,
     };
@@ -55,7 +55,7 @@ const getAllRecipes = async () => {
 
 const getApiById = async (id) => {
   const getApiRecipe = await recipesApi(
-    `/${id}/information?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
+    `/${id}/information?apiKey=${API_KEY2}&addRecipeInformation=true&number=100`
   );
   const { data } = getApiRecipe;
   if (data) {

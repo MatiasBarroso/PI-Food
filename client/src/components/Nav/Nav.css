@@ -3,10 +3,11 @@
     background-color: burlywood;
     flex-direction: row;
     text-align: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 .nav-title{
     margin: 0;
     font-size: 50px;
     text-align: center;
 }
+

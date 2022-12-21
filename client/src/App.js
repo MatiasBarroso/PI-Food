@@ -1,25 +1,28 @@
 import { Route } from "react-router-dom";
 import "./App.css";
-import Cards from "./components/Cards/Cards";
-import CreateRecipe from "./components/CreateRecipe/CreateRecipe";
-import Filters from "./components/Filters/Filters";
-import Nav from "./components/Nav/Nav";
+
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getAllRecipes, getDiets } from "./redux/actions";
+import Home from "./components/Home/Home";
+import LandingPage from "./components/LandingPage/LandingPage";
 import RecipeDetails from "./components/RecipeDetails/RecipeDetails";
+import CreateRecipe from "./components/CreateRecipe/CreateRecipe";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllRecipes());
+    dispatch(getDiets());
+  }, [dispatch]);
+
   return (
     <div className="App">
-      <Nav />
-      <div className="container-main-cards">
-        <Filters />
-        <Cards />
-      </div>
-      <Route path="/recipes/:id">
-        <RecipeDetails />
-      </Route>
-      <Route path="/recipe">
-        <CreateRecipe />
-      </Route>
+      <Route exact path="/" component={LandingPage} />
+      <Route path="/recipes" component={Home} />
+      <Route path="/recipes/:id" component={RecipeDetails} />
+      <Route path="/recipe/create" component={CreateRecipe} />
     </div>
   );
 }
