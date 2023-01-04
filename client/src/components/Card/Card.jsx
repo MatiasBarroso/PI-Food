@@ -1,13 +1,19 @@
 import React from 'react';
 import './Card.css';
-
-const Card = ({name, image, score}) => {
+import { Link } from 'react-router-dom';
+const Card = ({name, image, score, id, summary}) => {
+  
   return (
-    <div className='container-card'>
+    <Link to={`/recipes/${id}`} className='container-card' >
+    <div  key={id}>
         <img src={image} className="img-card" alt={name} />
-        <p>{name}</p>
-        <p>Health Score: {score}</p>
+      <div className='card-title-summary'>
+        <p className='r-name'>{name || "Your Food"}</p>
+        <p className='r-summary'>{summary?.split('.')[0] || "This food it's so delicious!"}</p>
+        <p className='r-hs'>Health Score: {score}</p>
+      </div>  
     </div>
+    </Link>
   )
 }
 

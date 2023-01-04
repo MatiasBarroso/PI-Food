@@ -7,12 +7,17 @@ import {
   FILTER_BY_TYPE,
   FILTER_BY_ORDER,
   FILTER_BY_SCORE,
+  RESET_RECIPES,
+  RECIPES_CREATED,
+  CLEAN_STATE,
 } from "../actions";
 
 const initialState = {
+  created: [],
   recipesCopy: [],
   recipes: [],
   recipe: {},
+  recipeByName: {},
   diets: [],
 };
 
@@ -21,8 +26,8 @@ const rootReducer = (state = initialState, action) => {
     case GET_ALL_RECIPES:
       return {
         ...state,
-        recipes: action.payload,
         recipesCopy: action.payload,
+        recipes: action.payload,
       };
     case GET_RECIPE:
       return {
@@ -35,17 +40,21 @@ const rootReducer = (state = initialState, action) => {
         diets: action.payload,
       };
     case CREATE_RECIPE:
+      console.log(action.payload);
+      const createdState = [...state.created, action.payload];
       return {
         ...state,
-        recipes: [...state.recipes, action.payload],
+        created: createdState,
+        recipes: state.recipes.concat(createdState),
       };
     case GET_RECIPE_BY_NAME:
       return {
         ...state,
+        recipes: action.payload,
       };
     case FILTER_BY_TYPE:
-      const filterRecipes = function (recipe) {
-        const diets = recipe.diets;
+      const filterRecipes = function (r) {
+        const diets = r.diets;
         let items = [];
 
         action.payload.forEach(function (diet) {
@@ -59,27 +68,44 @@ const rootReducer = (state = initialState, action) => {
         }
       };
 
-      const filterState = state.recipesCopy.filter(filterRecipes);
+      const filterState = state.recipesCopy
+        .concat(state.created)
+        .filter(filterRecipes);
 
       return {
         ...state,
-        recipes: filterState,
+        recipes:
+          action.payload.length > 0
+            ? filterState
+            : state.recipesCopy.concat(state.created),
       };
 
     case FILTER_BY_ORDER:
-      const recipesOrder =
-        action.payload === "up"
-          ? state.recipes.sort((a, b) => {
-              if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-              else return -1;
-            })
-          : state.recipes.sort((a, b) => {
-              if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
-              else return -1;
-            });
+      let sortedOrder;
+
+      action.payload === "ASC"
+        ? (sortedOrder = state.recipes.sort((a, b) => {
+            if (a.name > b.name) {
+              return 1;
+            }
+            if (b.name > a.name) {
+              return -1;
+            }
+            return 0;
+          }))
+        : (sortedOrder = state.recipes.sort((a, b) => {
+            if (a.name > b.name) {
+              return -1;
+            }
+            if (b.name > a.name) {
+              return 1;
+            }
+            return 0;
+          }));
+
       return {
         ...state,
-        recipes: recipesOrder,
+        recipes: sortedOrder,
       };
 
     case FILTER_BY_SCORE:
@@ -96,6 +122,26 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         recipes: recipesOrderScore,
+      };
+
+    case RESET_RECIPES:
+      return {
+        ...state,
+        recipes: state.recipesCopy.concat(state.created),
+      };
+
+    case RECIPES_CREATED:
+      return {
+        ...state,
+        recipes: state.created,
+      };
+
+    case CLEAN_STATE:
+      let resetState;
+      if (action.payload === "recipe") resetState = {};
+      return {
+        ...state,
+        recipe: resetState,
       };
 
     default:

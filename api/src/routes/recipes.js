@@ -10,7 +10,6 @@ router.get("/", async (req, res) => {
   try {
     const { name } = req.query;
     const allRecipes = await ctrl.getAllRecipes();
-
     if (name) {
       const nameConvert = ctrl.nameConverter(name);
       const findFood = allRecipes.filter((el) => el.name.includes(nameConvert));

@@ -1,7 +1,7 @@
 const axios = require("axios");
-const { Recipe } = require("../db.js");
+const { Recipe, Diet } = require("../db.js");
 require("dotenv").config();
-const { API_KEY2 } = process.env;
+const { API_KEY3 } = process.env;
 
 /!*    AXIOS INSTANCE (CORRIGE PROBLEMAS EN LA CONFIG DE AXIOS)    *!/;
 
@@ -16,7 +16,7 @@ const recipesApi = axios.create({
 
 const getApiRecipes = async () => {
   const resAxios = await recipesApi(
-    `/complexSearch?apiKey=${API_KEY2}&addRecipeInformation=true&number=100`
+    `/complexSearch?apiKey=${API_KEY3}&addRecipeInformation=true&number=100`
   );
   const { results } = resAxios.data;
   const dataMap = results.map((el) => {
@@ -43,8 +43,22 @@ const getApiRecipes = async () => {
 };
 
 const getDbRecipes = async () => {
-  const DbRecipes = await Recipe.findAll();
-  return DbRecipes;
+  const DbRecipes = await Recipe.findAll({
+    include: [
+      {
+        model: Diet,
+      },
+    ],
+  });
+
+  const dietsFilters = DbRecipes.map((recipe) => {
+    return {
+      ...recipe.dataValues,
+      diets: recipe.dataValues.diets.map((diet) => diet.name),
+    };
+  });
+
+  return DbRecipes.length > 0 ? dietsFilters : [];
 };
 
 const getAllRecipes = async () => {
@@ -55,7 +69,7 @@ const getAllRecipes = async () => {
 
 const getApiById = async (id) => {
   const getApiRecipe = await recipesApi(
-    `/${id}/information?apiKey=${API_KEY2}&addRecipeInformation=true&number=100`
+    `/${id}/information?apiKey=${API_KEY3}&addRecipeInformation=true&number=100`
   );
   const { data } = getApiRecipe;
   if (data) {
@@ -68,7 +82,7 @@ const getApiById = async (id) => {
     return {
       id: data.id,
       name: data.title,
-      summary: data.summary,
+      summary: removeTags(data.summary),
       healthScore: data.healthScore,
       stepByStep,
       image: data.image,
@@ -87,10 +101,18 @@ const nameConverter = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };
 
+const removeTags = (str) => {
+  if (str === null || str === "") return false;
+  else str = str.toString();
+
+  return str.replace(/(<([^>]+)>)/gi, "");
+};
+
 module.exports = {
   getApiRecipes,
   getDbRecipes,
   getAllRecipes,
   getApiById,
   nameConverter,
+  removeTags,
 };

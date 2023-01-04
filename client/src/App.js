@@ -1,6 +1,5 @@
 import { Route } from "react-router-dom";
 import "./App.css";
-
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getAllRecipes, getDiets } from "./redux/actions";
@@ -20,9 +19,9 @@ function App() {
   return (
     <div className="App">
       <Route exact path="/" component={LandingPage} />
-      <Route path="/recipes" component={Home} />
-      <Route path="/recipes/:id" component={RecipeDetails} />
-      <Route path="/recipe/create" component={CreateRecipe} />
+      <Route exact path="/recipes" component={Home} />
+      <Route exact path="/recipes/:id" component={RecipeDetails} />
+      <Route exact path="/recipe/create" component={CreateRecipe} />
     </div>
   );
 }

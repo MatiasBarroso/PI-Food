@@ -31,10 +31,6 @@ module.exports = (sequelize) => {
       image: {
         type: DataTypes.STRING(500),
       },
-      types: {
-        type: DataTypes.ARRAY(DataTypes.STRING(500)),
-        defaultValue: [],
-      },
       score: {
         type: DataTypes.INTEGER,
         defaultValue: 0,

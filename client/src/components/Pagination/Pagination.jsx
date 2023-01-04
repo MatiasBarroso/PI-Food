@@ -1,45 +1,114 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import './Pagination.css';
 
-const Pagination = ({ page, setPage, max }) => {
-    const [input, setInput] = useState(1)
+const Pagination = ({ page, setPage, max, start, end }) => {
+    
+    const [limitPage, setLimitPage] = useState(1)
+    const [endPag, setEndPag] = useState(10)
+    const [active, setActive] = useState({
+        type: false,
+        page: 0
+    })
+
+    const state = useSelector(state => state)
+
+    useEffect(() => {
+        
+        if(state && state.recipes.length > 0) {
+            setPage(1)
+            setActive({
+              type:true,
+              page: 1
+            })
+            setLimitPage(1)
+            setEndPag(10)
+        }
+    }, [state, setPage])
+
 
     const nextPage = () => {
-      if(page < max){
-          setInput(page + 1)
+       if(page < max && page === endPag){
           setPage(page + 1)
-      }
+          setActive({
+            type: true,
+            page: page + 1
+          })
+          setLimitPage(limitPage + 9)
+          setEndPag(endPag + 10)
+        }
+        if(page < max && page !== endPag){
+            setPage(page + 1)
+            setActive({
+              type: true,
+              page: page + 1
+            })
+        }
     }
+
     const prevPage = () => {
-        if(page > 1 && input > 1){
-          setInput(page - 1);
-          setPage(page - 1)
-        } else {
-            setInput(1)
-        }
+        if(page > 1 && page === limitPage){
+            setPage(page - 1)
+            setActive({
+              type: true,
+              page: page - 1
+            })
+            setLimitPage(limitPage - 9)
+            setEndPag(endPag - 10)
+          }
+          if(page > 1 && page !== limitPage){
+              setPage(page - 1)
+              setActive({
+                type: true,
+                page: page - 1
+              })
+          }
     }
 
-    const onKeyDown = (e) => {
-        if(e.keyCode === 13){
-            if(parseInt(e.target.value < 1) || parseInt(e.target.value) > max || isNaN(parseInt(e.target.value))){
-                setPage(1);
-                setInput(1);
-            } else {
-                setPage(parseInt(e.target.value))
-                setInput(parseInt(e.target.value))
-            }
+    const onClickBtnPage = (e) => {
+        e.preventDefault();
+        if(parseInt(e.target.value) === endPag){
+            setLimitPage(limitPage + 9)
+            setEndPag(endPag + 10)
         }
+        if(parseInt(e.target.value) === limitPage && parseInt(e.target.value) !== 1){
+            setLimitPage(limitPage - 9)
+            setEndPag(endPag - 10)
+        }
+        setPage(parseInt(e.target.value))
+        setActive({
+            type:true,
+            page: e.target.value
+        })
     }
 
-    const onChange = (e) => {
-        setInput(e.target.value)
-    }
+
+    // const onClickBtnPage = (e) => {
+    //     e.preventDefault();
+    //     if(parseInt(e.target.value) === endPag){
+    //         setLimitPage(limitPage + 9)
+    //         setEndPag(endPag + 10)
+    //     }
+    //     if(parseInt(e.target.value) === limitPage && parseInt(e.target.value) !== 1){
+    //         setLimitPage(limitPage - 9)
+    //         setEndPag(endPag - 10)
+    //     }
+    //     setPage(parseInt(e.target.value))
+    //     setActive({
+    //         type:true,
+    //         page: e.target.value
+    //     })
+    // }
+
+    let buttons = []
+    for(var i=0; i<max; i++) buttons.push(<button className={active && parseInt(active.page) === i+1 ? 'pag-button-active' : 'pag-button-disabled'} key={`box-${i}`} value={i+1} onClick={onClickBtnPage}>{i+1}</button>)
+    
   return (
     <div className='pagination'>
-        <button className='prev-button' onClick={() => prevPage()}>PREV</button>
-        <input name='page' type='number' value={input} min="1" max={max} autoComplete='off' onChange={e => onChange(e)} onKeyDown={e => onKeyDown(e)}></input>
-        <p className='count-pagination'>DE {max}</p>
-        <button className='next-button' onClick={() => nextPage()}>NEXT</button>
+        <button className='pag-pr-nx' onClick={prevPage} value={limitPage}>&#60;</button>
+            {buttons.length > 0 && buttons.length <= 10 ? buttons : buttons?.slice(limitPage - 1, endPag)}
+        <p className='count-pagination'>DE {max === 0 && buttons.length > 0 ? 1 : max}</p>
+        <button className='pag-pr-nx' onClick={nextPage} value='next'>&#62;</button>
     </div>
   )
 }

@@ -6,15 +6,16 @@ const router = express.Router();
 /*  POST RECIPE  */
 router.post("/", async (req, res) => {
   const { name, summary, healthScore, diets } = req.body;
-  const parsedHealthScore = parseInt(healthScore);
+
   if (!name || !summary || !diets || !healthScore)
     return res.status(400).send("All options are require");
+
   try {
     const nameConvert = ctrl.nameConverter(name);
     const newRecipe = await Recipe.create({
       name: nameConvert,
       summary,
-      healthScore: parsedHealthScore,
+      healthScore,
     });
 
     const dietsTypes = await Diet.findAll({
@@ -24,15 +25,27 @@ router.post("/", async (req, res) => {
     const values = dietsTypes.map((diet) => diet.dataValues.id);
     await newRecipe.setDiets(values);
     const newRecipeDiets = await Recipe.findAll({
+      where: {
+        name: nameConvert,
+      },
       include: [
         {
           model: Diet,
         },
       ],
     });
-    res.send(newRecipeDiets);
+
+    const dietsFilters = newRecipeDiets[0].dataValues.diets.map(
+      (diet) => diet.name
+    );
+    const recipeCreated = {
+      ...newRecipeDiets[0].dataValues,
+      diets: dietsFilters,
+    };
+    res.send(recipeCreated);
   } catch (error) {
-    res.status(400).send("error");
+    console.log(error);
+    next();
   }
 });
 

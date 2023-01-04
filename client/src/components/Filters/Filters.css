@@ -1,33 +1,178 @@
+/* FILTERS MAIN CONTAINER */
 .container-filters{
-    width: 15%;
-    height: 100vh;
-    background-color: antiquewhite;
-}
-
-.filters-title{
-    font-size: 50px;
-    text-align: center;
-    margin:0;
-    padding: 0;
-}
-
-.checkbox-container{
+    width: 100%;
+    height: max-content;
+    background-color: transparent;
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin:0;
+    justify-content: center;
+    background-color: #FFC200;
 }
 
-.checkbox-title{
+/* CONTAINERS FILTERS */
+.container-filter-diets{
+    width:100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    align-items: center;
+}
+
+.diets-main-container{
+    width:25%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     margin: 0;
+}
+
+.container-options-selected{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.container-filter{
+    width:16%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+.filter-title{
+    margin: 0;
+    font-family: 'Alexandria', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    color:white;
+    text-align: center;
+    margin-bottom: 5px;
     padding: 0;
+
 }
 
-[type=checkbox]{
-    transform: scale(0.7);
-    background-color: red;
+
+
+.select-filter{
+    font-family: 'Alexandria', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    height: 30px;
+    width: 260px;
+    cursor: pointer;
+    background-color: white;
+    border: none;
 }
 
-[type=checkbox]:checked {
-    background: red;
-  }
+.select-filter:hover{
+    background-color: transparent;
+    border: none;
+}
+
+.btn-filt{
+    height: 30px;
+    width: 160px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Alexandria', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: white;
+    border: none;
+}
+
+.btn-filt-create{
+    height: 30px;
+    width: 160px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Alexandria', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: #000000;
+    color: white;
+    border: none;
+}
+
+.btn-filt:hover{
+    background-color: black;
+    cursor:pointer;
+    color:#FFC200;
+}
+
+.btn-filt-create:hover{
+    background-color: black;
+    cursor:pointer;
+    color:#FFC200;
+    box-shadow: 1px 1px 2px 3px #FFC200;
+}
+
+.btn-filt-cr-re{
+    height: 30px;
+    width: 260px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Alexandria', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+}
+
+.btn-filt-cr-re:hover{
+    background-color: black;
+    cursor:pointer;
+    color:#FFC200;
+    box-shadow: 1px 1px 2px 3px #FFC200;
+}
+
+.option-selected{
+    font-family: 'Alexandria', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    height: 30px;
+    width: 260px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    display: flex;
+    flex-direction: row;
+    border: 2px solid white;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 5px;
+    color: white;
+}
+
+
+
+.btn-close{
+    padding:0;
+    margin-right:7px;
+    background-color: transparent;
+    color:#FFC200;
+    border: none;
+    font-family: 'Alexandria', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+hr{
+    width: 160px;
+    border: 0,5px solid #FFC200;
+}
+
+

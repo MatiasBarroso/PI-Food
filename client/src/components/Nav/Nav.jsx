@@ -1,13 +1,11 @@
 import React from 'react'
 import SearchBar from '../SearchBar/SearchBar';
 import "./Nav.css";
-
+import logoNav from "../../assets/lp/1x/Recurso2.png"
 const Nav = () => {
   return (
     <div className='container-nav'>
-        <h1 className='nav-title'>
-            NAV
-        </h1>
+        <img className='nav-title' src={logoNav} alt="img-nav"/>
         <SearchBar />
     </div>
   )

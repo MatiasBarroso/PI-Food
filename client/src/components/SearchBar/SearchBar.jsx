@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import "./SearchBar.css"
 import { getRecipesByName } from '../../redux/actions'
 const SearchBar = () => {
+
     const [searchInput, setSearchInput] = useState("")
     const dispatch = useDispatch()
   
@@ -11,15 +12,15 @@ const SearchBar = () => {
         setSearchInput(e.target.value)
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault(e);
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
         dispatch(getRecipesByName(searchInput));
         setSearchInput("");
     }
    
   return (
-    <div className='container-searchBar'>
-      <form onSubmit={e => handleSubmit(e)}>
+    <div>
+      <form className='container-searchBar' onSubmit={e => handleSearchSubmit(e)}>
         <input
         className='search-input'
             type="text"
