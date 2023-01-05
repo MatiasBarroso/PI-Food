@@ -1,7 +1,7 @@
 const axios = require("axios");
 const { Recipe, Diet } = require("../db.js");
 require("dotenv").config();
-const { API_KEY3 } = process.env;
+const { API_KEY2 } = process.env;
 
 /!*    AXIOS INSTANCE (CORRIGE PROBLEMAS EN LA CONFIG DE AXIOS)    *!/;
 
@@ -16,16 +16,24 @@ const recipesApi = axios.create({
 
 const getApiRecipes = async () => {
   const resAxios = await recipesApi(
-    `/complexSearch?apiKey=${API_KEY3}&addRecipeInformation=true&number=100`
+    `/complexSearch?apiKey=${API_KEY2}&addRecipeInformation=true&number=100`
   );
   const { results } = resAxios.data;
+
   const dataMap = results.map((el) => {
     const stepByStep =
       el.analyzedInstructions[0] && el.analyzedInstructions[0].steps
         ? el.analyzedInstructions[0].steps.map(
-            (el) => "step " + el.number.toString() + ": " + el.step
+            (el) => "Step " + el.number.toString() + ": " + el.step
           )
         : [];
+
+    const dietsConverts = el.diets.map((el) =>
+      el
+        .split(" ")
+        .map((el) => nameConverter(el))
+        .join(" ")
+    );
 
     return {
       id: el.id,
@@ -34,7 +42,7 @@ const getApiRecipes = async () => {
       healthScore: el.healthScore,
       stepByStep,
       image: el.image,
-      diets: el.diets?.map((el) => nameConverter(el)),
+      diets: dietsConverts,
       types: el.dishTypes,
       score: el.spoonacularScore,
     };
@@ -69,16 +77,24 @@ const getAllRecipes = async () => {
 
 const getApiById = async (id) => {
   const getApiRecipe = await recipesApi(
-    `/${id}/information?apiKey=${API_KEY3}&addRecipeInformation=true&number=100`
+    `/${id}/information?apiKey=${API_KEY2}&addRecipeInformation=true&number=100`
   );
   const { data } = getApiRecipe;
   if (data) {
     const stepByStep =
       data.analyzedInstructions[0] && data.analyzedInstructions[0].steps
         ? data.analyzedInstructions[0].steps.map(
-            (data) => "step " + data.number.toString() + ": " + data.step
+            (data) => "Step " + data.number.toString() + ": " + data.step
           )
         : [];
+
+    const dietsConverts = data.diets.map((el) =>
+      el
+        .split(" ")
+        .map((el) => nameConverter(el))
+        .join(" ")
+    );
+
     return {
       id: data.id,
       name: data.title,
@@ -86,7 +102,7 @@ const getApiById = async (id) => {
       healthScore: data.healthScore,
       stepByStep,
       image: data.image,
-      diets: data.diets,
+      diets: dietsConverts,
       types: data.dishTypes,
       score: data.spoonacularScore,
     };

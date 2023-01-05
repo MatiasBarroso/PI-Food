@@ -8,13 +8,8 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const diets = await ctrl.getDiets();
-    const modifyDiets = diets.map((el) => {
-      return {
-        id: el.id,
-        name: nameConverter(el.name),
-      };
-    });
-    res.send(modifyDiets);
+
+    res.send(diets);
   } catch (error) {
     res.status(404).send(error);
   }

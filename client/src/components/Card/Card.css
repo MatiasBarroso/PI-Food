@@ -3,7 +3,7 @@
     flex-direction: column;
     margin:15px;
     width:250px;
-    height:350px;
+    height:360px;
     background-color: white;
     border-radius: 5px;
     box-shadow: -9px 13px 34px -13px rgba(0,0,0,0.75);
@@ -24,7 +24,7 @@
     padding-right:15px;
     font-family: 'Alexandria', sans-serif;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 13px;
     color: black;
     text-align: start;
 }

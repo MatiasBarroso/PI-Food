@@ -4,7 +4,7 @@ import { useState  } from 'react';
 import { useSelector } from 'react-redux';
 import Card from '../Card/Card';
 import Pagination from '../Pagination/Pagination';
-
+import Loading from '../Loading/Loading';
 const Cards = () => {
 
   const [page, setPage] = useState(1);
@@ -28,7 +28,7 @@ const Cards = () => {
         <Pagination page={page} setPage={setPage} max={max} start={start} end={end}/>
       </div>
     <div className='cards-main-cont'>
-      <div className='cards'>
+      {state && state.recipes.length ===  0 ? <Loading /> : <div className='cards'>
         {state && state.recipes.length > 0 ? state.recipes.slice(start, end).map(el => {
           return (
             <Card
@@ -40,7 +40,7 @@ const Cards = () => {
               summary={removeTags(el.summary)}
             />)
         }) : <p className='no-res'>No results found</p>}
-      </div>
+      </div>}
     </div>
     </div>
   )

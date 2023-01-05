@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import "./SearchBar.css"
 import { getRecipesByName } from '../../redux/actions'
+import searchIcon from '../../assets/lp/search-icon.png'
+
 const SearchBar = () => {
 
     const [searchInput, setSearchInput] = useState("")
@@ -27,7 +29,9 @@ const SearchBar = () => {
             placeholder="Search here"
             onChange={handleChange}
             value={searchInput} />
-        <button type="submit" className='searchBar-button'>Search</button>
+        <button type="submit" className='searchBar-button'>
+          <img className='s-icon' src={searchIcon} alt='s-icon'></img>
+        </button>
       </form>
     </div>
   )

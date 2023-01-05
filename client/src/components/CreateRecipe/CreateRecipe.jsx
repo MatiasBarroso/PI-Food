@@ -3,6 +3,8 @@ import './CreateRecipe.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { createRecipe } from '../../redux/actions';
 import { useHistory } from 'react-router-dom';
+import { nameConverter } from './CreateRecipe.modules';
+
 import Card from '../Card/Card'
 
 const CreateRecipe = () => {
@@ -173,24 +175,34 @@ const CreateRecipe = () => {
     else setActive(true)
   }, [errors, setActive])
 
+  useEffect(() => {
+    if(state.created?.some(el => el.name === nameConverter(data.name))){
+    setData({
+      name: "",
+      summary: "",
+      healthScore: 1,
+      image: defaultImg,
+      diets: []
+    })
+    setErrors({
+      name: "Name is required",
+      summary: "Summary is required",
+      healthScore: "Health Score is required",
+      image: '',
+    })
+    alert('Your recipes has been created successfully')
+  }
+  },[state.created, data])
+
   const handleSubmit = (e) => {
     e.preventDefault()
+    if(state.recipes?.some(el => el.name === data.name.split(" ").map(el => nameConverter(el)).join(" "))){
+      alert('The recipe name already exists')
+      return;
+    }
     if(e.target.submit.name === 'submit'){
-      console.log(data)
       dispatch(createRecipe(data))
-      setData({
-        name: "",
-        summary: "",
-        healthScore: 1,
-        image: defaultImg,
-        diets: []
-      })
-      setErrors({
-        name: "Name is required",
-        summary: "Summary is required",
-        healthScore: "Health Score is required",
-        image: '',
-      })
+      
     }
   }
 
@@ -215,6 +227,7 @@ const CreateRecipe = () => {
   }
 
   const onClose = (d) => {
+    console.log(d)
     setData({
       ...data,
       diets: data.diets.filter(diet => diet !== d )})
@@ -281,7 +294,7 @@ const CreateRecipe = () => {
         <div className='options-cr-cont'>
             {data.diets?.map((d, index) => <div className='option-selected-create' key={index}>
               <p>{d}</p>
-              <button className='btn-close' onClick={() => onClose(d)}>x</button>
+              <button className='btn-close' type='button' onClick={() => onClose(d)}>x</button>
             </div>)}
         </div>
           <button className='submit-btn' disabled={active} name='submit' type='submit'>CREATE RECIPE</button>

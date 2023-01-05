@@ -25,15 +25,16 @@ conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-console
     const preChargeDiets = [
-      "Gluten free",
-      "Dairy free",
-      "Lacto ovo vegetarian",
+      "Gluten Free",
+      "Dairy Free",
+      "Lacto Ovo Vegetarian",
       "Vegan",
       "Paleolithic",
       "Primal",
       "Ketogenic",
       "Pescetarian",
       "Whole 30",
+      "Vegetarian",
     ];
     preChargeDiets.forEach((diet) => Diet.create({ name: diet }));
   });
