@@ -3,6 +3,10 @@
     height: 100%;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background-color: #000000;
     background-image: url("../../assets/lp/1x/bg-home.png");
     background-attachment: fixed;
@@ -15,13 +19,14 @@
 }
 
 .container-main-cards{
-    width: 100%;
-    height:100%;
+    max-width: 100vw;
+    height: 73%;
     align-items: center;
     justify-content: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding-top: 25px;
     margin: 0;
+    padding: 0;
+
 }

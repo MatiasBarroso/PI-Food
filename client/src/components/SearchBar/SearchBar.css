@@ -26,7 +26,7 @@
 
 .searchBar-button{
     margin:0;
-    height: 36px;
+    height: 37px;
     width: 36px; 
     color: rgb(0, 0, 0);
     background-color: #FFC200;
@@ -42,7 +42,7 @@
 .searchBar-button:hover{
     background-color: #fff;
     color: #FFC200;
-    box-shadow: 3px 1px 78px 19px #FFC200;
+    box-shadow: 3px 1px 38px 9px #FFC200;
     border: 1px solid white;
 }
 

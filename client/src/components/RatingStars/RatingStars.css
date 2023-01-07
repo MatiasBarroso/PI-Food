@@ -1,9 +1,11 @@
 .cont-stars{
-    width:max-content;
-    height: max-content;
+    width:100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
-    padding:5px;
+    padding:1px;
+    gap: 1px;
+    align-items: center;
     border-radius: 20px;
     background-color: white;
     border: 2px solid #FFC200;
@@ -12,7 +14,7 @@
 .pointed {
     --star-color:orange;
     margin:1em auto;
-    font-size:1em;
+    font-size:0.8em;
     position: relative;
     display: block;
     width: 0px;
@@ -52,7 +54,7 @@
 .not-pointed {
     --star-color:rgb(0, 0, 0);
     margin:1em auto;
-    font-size:1em;
+    font-size:0.8em;
     position: relative;
     display: block;
     width: 0px;

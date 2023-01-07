@@ -1,6 +1,5 @@
 const express = require("express");
 const ctrl = require("../controllers/recipes.controllers");
-const { pagination } = require("../controllers/pagination.controller");
 const { Recipe } = require("../db.js");
 const router = express.Router();
 
@@ -22,40 +21,6 @@ router.get("/", async (req, res) => {
     res.status(404).send(error);
   }
 });
-
-/*   ALL RECIPES + PAGINATION   */
-
-// router.get("/", async (req, res) => {
-//   try {
-//     const { name, page, limit } = req.query;
-//     const allRecipes = await ctrl.getAllRecipes();
-//     if (name) {
-//       const nameConvert = ctrl.nameConverter(name);
-//       const findFood = allRecipes.filter((el) => el.name.includes(nameConvert));
-//       return findFood
-//         ? res.send(findFood)
-//         : res.status(404).send("Food doesn't exist");
-//     }
-//     if (page && limit) {
-//       const pages = await pagination(
-//         allRecipes,
-//         parseInt(page),
-//         parseInt(limit)
-//       );
-//       return res.json(pages);
-//     }
-//     let firstPage = {
-//       results: allRecipes.slice(0, 8),
-//     };
-//     firstPage.next = {
-//       page: 2,
-//       limit: 8,
-//     };
-//     res.send(firstPage);
-//   } catch (error) {
-//     res.status(404).send(error);
-//   }
-// });
 
 /*  GET RECIPE BY ID  */
 

@@ -1,7 +1,7 @@
 const axios = require("axios");
 const { Recipe, Diet } = require("../db.js");
 require("dotenv").config();
-const { API_KEY2 } = process.env;
+const { API_KEY7 } = process.env;
 
 /!*    AXIOS INSTANCE (CORRIGE PROBLEMAS EN LA CONFIG DE AXIOS)    *!/;
 
@@ -16,7 +16,7 @@ const recipesApi = axios.create({
 
 const getApiRecipes = async () => {
   const resAxios = await recipesApi(
-    `/complexSearch?apiKey=${API_KEY2}&addRecipeInformation=true&number=100`
+    `/complexSearch?apiKey=${API_KEY7}&addRecipeInformation=true&number=100`
   );
   const { results } = resAxios.data;
 
@@ -77,7 +77,7 @@ const getAllRecipes = async () => {
 
 const getApiById = async (id) => {
   const getApiRecipe = await recipesApi(
-    `/${id}/information?apiKey=${API_KEY2}&addRecipeInformation=true&number=100`
+    `/${id}/information?apiKey=${API_KEY7}&addRecipeInformation=true&number=100`
   );
   const { data } = getApiRecipe;
   if (data) {

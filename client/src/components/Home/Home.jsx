@@ -4,7 +4,7 @@ import "./Home.css"
 import Nav from "../Nav/Nav"
 import Cards from "../Cards/Cards";
 import Filters from "../Filters/Filters";
-
+import Footer from "../Footer/Footer"
 function Home() {
 
 
@@ -15,6 +15,7 @@ function Home() {
       <div className="container-main-cards">
         <Cards /> 
       </div>
+      <Footer/>
     </div>
   );
 }

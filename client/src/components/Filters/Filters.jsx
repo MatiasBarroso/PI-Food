@@ -74,7 +74,7 @@ const Filters = () => {
   }
 
   return (
-    <div>
+    <div className='main-cont-filt'>
       <div className='container-filters'> 
       
         <div className='container-filter-diets'>

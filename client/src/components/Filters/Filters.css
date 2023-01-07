@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-around;
     gap: 35px;
     background-color: #FFC200;
     padding-left: 19px;
@@ -160,7 +161,7 @@ option{
     color: rgb(0, 0, 0);
     border: none;
     padding-left: 10px;
-    padding-right: 10px;
+    padding-right: 50px;
 }
 
 .btn-filt-cr-re:hover{
@@ -209,4 +210,9 @@ hr{
     border: 0,5px solid #FFC200;
 }
 
-
+.main-cont-filt{
+    width:100%;
+    height: 6%;
+    padding-left: 10%;
+    padding-right:10%
+}
