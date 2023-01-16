@@ -5,7 +5,7 @@ const router = express.Router();
 
 /*  POST RECIPE  */
 router.post("/", async (req, res) => {
-  const { name, summary, healthScore, diets } = req.body;
+  const { name, summary, healthScore, diets, stepByStep } = req.body;
 
   if (!name || !summary || !diets || !healthScore)
     return res.status(400).send("All options are require");
@@ -16,6 +16,7 @@ router.post("/", async (req, res) => {
       name: nameConvert,
       summary,
       healthScore,
+      stepByStep,
     });
 
     const dietsTypes = await Diet.findAll({
@@ -44,7 +45,6 @@ router.post("/", async (req, res) => {
     };
     res.send(recipeCreated);
   } catch (error) {
-    console.log(error);
     next();
   }
 });

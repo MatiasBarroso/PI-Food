@@ -19,6 +19,18 @@
     
 }
 
+.card-item-cont{
+    width:250px;
+    height:360px;
+}
+
+.r-name-cont{
+    display: flex;
+    justify-content: flex-start;
+    width:100%;
+    height: max-content;
+}
+
 .r-name{
     padding:0;
     margin:0;
@@ -29,19 +41,23 @@
     font-size: 13px;
     color: black;
     text-align: start;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .r-hs{
     padding:0;
     margin:0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
     padding-left:15px;
     padding-right:15px;
-    font-family: 'Alexandria', sans-serif;
-    font-weight: 600;
-    font-size: 15px;
     color: black;
     text-align: center;
     height: 30px;
+    font-size: 15px;
 }
 
 .r-summary{
@@ -54,6 +70,7 @@
     font-size: 10px;
     color: black;
     text-align: start;
+    margin-top: 10px;
 }
 
 .img-card{
@@ -64,8 +81,8 @@
 
 .card-title-summary{
     width: 100%;
-    height: 150px;
+    height: 120px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
 }

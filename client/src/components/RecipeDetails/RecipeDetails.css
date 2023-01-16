@@ -30,7 +30,7 @@
 .container-img-title{
     background-color: #ffc200;
     width:100%;
-    max-height: 250px;
+    height: 250px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -52,7 +52,7 @@
 }
 
 .rec-summary{
-    
+    height:max-content;
     font-size: 16px;
     font-weight: 400;
 }
@@ -89,6 +89,10 @@
     -webkit-background-clip: text;
     color: transparent;
      
+}
+
+.cont-sbs-details{
+    width:100%
 }
 
 .rec-num{
@@ -207,7 +211,7 @@
 
 /*--------- ICONS DIETS ---------*/
 
-.gg-check {
+.gg-check-det {
     box-sizing: border-box;
     position: relative;
     display: block;
@@ -219,7 +223,7 @@
     color: white;
     background-color: #ffc400;
 }
-.gg-check::after {
+.gg-check-det::after {
     content: "";
     display: block;
     box-sizing: border-box;
@@ -235,7 +239,7 @@
     color: white;
 }
 
-.gg-close {
+.gg-close-det {
     box-sizing: border-box;
     position: relative;
     display: block;
@@ -248,8 +252,8 @@
     align-items: center;
     justify-content: center;
 }
-.gg-close::after,
-.gg-close::before {
+.gg-close-det::after,
+.gg-close-det::before {
     content: "";
     display: block;
     box-sizing: border-box;
@@ -263,7 +267,7 @@
     left: 1px;
     color: rgb(180, 180, 180);
 }
-.gg-close::after {
+.gg-close-det::after {
     transform: rotate(-45deg);
     color: rgb(180, 180, 180);
 }

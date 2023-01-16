@@ -19,9 +19,7 @@ export const getAllRecipes = () => (dispatch) => {
 };
 
 export const getRecipe = (id) => (dispatch) => {
-  return axios(`http://localhost:3001/recipes/${id}`).then((res) => {
-    dispatch({ type: GET_RECIPE, payload: res.data });
-  });
+  dispatch({ type: GET_RECIPE, payload: id });
 };
 
 export const getDiets = () => (dispatch) => {
@@ -78,9 +76,9 @@ export const createdRecipes = () => {
   };
 };
 
-export const cleanUpState = (state) => {
+export const cleanUpState = (id) => {
   return {
     type: CLEAN_STATE,
-    payload: state,
+    payload: { id: id, state: "recipes" },
   };
 };

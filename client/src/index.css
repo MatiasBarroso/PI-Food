@@ -8,6 +8,12 @@ body {
   padding:0;
 }
 
+/* -------FONTS------- */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;900&display=swap');
+
+
 @font-face {
   font-family: 'gloss_and_bloomregular';
   src: url('./assets/fonts/gloss_and_bloom-webfont.woff') format('woff');
@@ -16,3 +22,10 @@ body {
 
 }
 
+@font-face {
+  font-family: 'Nunito';
+  src: url('./assets/fonts/gloss_and_bloom-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}

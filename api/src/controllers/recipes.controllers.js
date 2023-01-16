@@ -12,9 +12,7 @@ const recipesApi = axios.create({
   },
 });
 
-/!*      ASYNC FUNCTIONS      *!/;
-
-const getApiRecipes = async () => {
+/*      ASYNC FUNCTIONS      */ const getApiRecipes = async () => {
   const resAxios = await recipesApi(
     `/complexSearch?apiKey=${API_KEY7}&addRecipeInformation=true&number=100`
   );
@@ -38,7 +36,7 @@ const getApiRecipes = async () => {
     return {
       id: el.id,
       name: el.title,
-      summary: el.summary,
+      summary: removeTags(el.summary),
       healthScore: el.healthScore,
       stepByStep,
       image: el.image,
@@ -75,41 +73,41 @@ const getAllRecipes = async () => {
   return apiRecipes.concat(dbRecipes);
 };
 
-const getApiById = async (id) => {
-  const getApiRecipe = await recipesApi(
-    `/${id}/information?apiKey=${API_KEY7}&addRecipeInformation=true&number=100`
-  );
-  const { data } = getApiRecipe;
-  if (data) {
-    const stepByStep =
-      data.analyzedInstructions[0] && data.analyzedInstructions[0].steps
-        ? data.analyzedInstructions[0].steps.map(
-            (data) => "Step " + data.number.toString() + ": " + data.step
-          )
-        : [];
+// const getApiById = async (id) => {
+//   const getApiRecipe = await recipesApi(
+//     `/${id}/information?apiKey=${API_KEY5}&addRecipeInformation=true&number=100`
+//   );
+//   const { data } = getApiRecipe;
+//   if (data) {
+//     const stepByStep =
+//       data.analyzedInstructions[0] && data.analyzedInstructions[0].steps
+//         ? data.analyzedInstructions[0].steps.map(
+//             (data) => "Step " + data.number.toString() + ": " + data.step
+//           )
+//         : [];
 
-    const dietsConverts = data.diets.map((el) =>
-      el
-        .split(" ")
-        .map((el) => nameConverter(el))
-        .join(" ")
-    );
+//     const dietsConverts = data.diets.map((el) =>
+//       el
+//         .split(" ")
+//         .map((el) => nameConverter(el))
+//         .join(" ")
+//     );
 
-    return {
-      id: data.id,
-      name: data.title,
-      summary: removeTags(data.summary),
-      healthScore: data.healthScore,
-      stepByStep,
-      image: data.image,
-      diets: dietsConverts,
-      types: data.dishTypes,
-      score: data.spoonacularScore,
-    };
-  }
+//     return {
+//       id: data.id,
+//       name: data.title,
+//       summary: removeTags(data.summary),
+//       healthScore: data.healthScore,
+//       stepByStep,
+//       image: data.image,
+//       diets: dietsConverts,
+//       types: data.dishTypes,
+//       score: data.spoonacularScore,
+//     };
+//   }
 
-  return [];
-};
+//   return [];
+// };
 
 /!*    SECONDARY FUNCTIONS    *!/;
 
@@ -128,7 +126,6 @@ module.exports = {
   getApiRecipes,
   getDbRecipes,
   getAllRecipes,
-  getApiById,
   nameConverter,
   removeTags,
 };

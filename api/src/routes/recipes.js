@@ -31,6 +31,8 @@ router.get("/:id", async (req, res) => {
 
     if (uuid.length > 1) {
       const findFood = await Recipe.findByPk(id);
+
+      // console.log(findFood);
       return findFood
         ? res.send(findFood)
         : res.status(404).send("Food doesn't exist");

@@ -16,12 +16,13 @@ const Filters = () => {
   //-------------------------------------------//
 
   const dispatch = useDispatch()
-  const diets = useSelector(state => state.diets)
+  const { diets, created } = useSelector(state => state)
 
   //         USE EFECTS - DISPATCHES          //
   
   useEffect(() => {
-    dispatch(filterByType(dietsState))
+   dispatch(filterByType(dietsState))
+    
 }, [dispatch, dietsState])
 
   useEffect(() => {
@@ -55,30 +56,33 @@ const Filters = () => {
     setOrder(e.target.value)
   }
   
-  const handleOnClick = (d) => {
-    setDietsState(dietsState.filter(diet => diet !== d ))
+  const onClose = (e) => { 
+    setDietsState(dietsState.filter(diet => diet !== e.target.value ))
   }
 
   const handleOnChangeScore = (e) => {
+    e.preventDefault()
     setScore(e.target.value)
   }
 
   const onClickReset = (e) => {
     e.preventDefault()
     dispatch(resetRecipes())
+    setDietsState([])
+    setOrder("")
+    setScore("")
   }
 
   const onClickCreated = (e) => {
     e.preventDefault()
+    if(created.length === 0) return;
     dispatch(createdRecipes())
   }
 
   return (
     <div className='main-cont-filt'>
-      <div className='container-filters'> 
-      
-        <div className='container-filter-diets'>
-          <select className='select-filter' value={dietsState.length === 0 ? 'Filter By Diets' : dietsState } onChange={handleOnChange}>
+       <div className='container-filter-diets'>
+          <select className='select-filter' value={dietsState.length === 0 ? 'Filter By Diets' : dietsState[diets.length - 1] } onChange={handleOnChange}>
                 <option disabled defaultValue>
                   Filter By Diets
                 </option>
@@ -93,7 +97,7 @@ const Filters = () => {
           <option value='DESCENDANT'>DESCENDANT</option>
         </select>
      
-          <select className='select-filter' value='Health Score' onChange={handleOnChangeScore}>
+          <select className='select-filter' value={score === "" ? 'Health Score' : score} onChange={handleOnChangeScore}>
                 <option disabled defaultValue>Health Score</option>
                 <option value='up'>UP</option>
                 <option value='down'>DOWN</option>
@@ -105,12 +109,11 @@ const Filters = () => {
           <button className='btn-filt-cr-re'>Create Your Recipe</button>
         </Link>
 
-      </div>
-      {dietsState.length > 0 && <div className='container-selected-filters'>
-            {dietsState.map((d, index) => <div className='option-selected' key={index}>
-                  <p className='diet-select'>{d}</p>
-                  <button className='btn-close' onClick={() => handleOnClick(d)}>x</button>
-            </div>)}
+      {dietsState.length > 0 && <div className='container-options-selected'>
+        {dietsState.map((d, index) => <div className='option-selected' key={index}>
+            <p className='diet-select'>{d}</p>
+            <button className='btn-close' type='button' value={d} onClick={(e) => onClose(e)}>x</button>
+          </div>)}
       </div>}
     </div>
   )

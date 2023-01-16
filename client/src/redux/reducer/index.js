@@ -26,13 +26,24 @@ const rootReducer = (state = initialState, action) => {
     case GET_ALL_RECIPES:
       return {
         ...state,
+        created: action.payload.filter((el) => el.createdInDb === true),
         recipesCopy: action.payload,
         recipes: action.payload,
       };
     case GET_RECIPE:
+      const uuid = action.payload.split("-");
+      if (uuid.length > 1) {
+        return {
+          ...state,
+          recipe: state.created.find((el) => el.id === action.payload),
+        };
+      }
+
       return {
         ...state,
-        recipe: action.payload,
+        recipe: state.recipesCopy.find(
+          (el) => el.id === parseInt(action.payload)
+        ),
       };
     case GET_DIETS:
       return {
@@ -40,12 +51,11 @@ const rootReducer = (state = initialState, action) => {
         diets: action.payload,
       };
     case CREATE_RECIPE:
-      console.log(action.payload);
-      const createdState = [...state.created, action.payload];
       return {
         ...state,
-        created: createdState,
-        recipes: state.recipes.concat(createdState),
+        created: state.created.concat(action.payload),
+        recipesCopy: state.recipesCopy.concat(action.payload),
+        recipes: state.recipes.concat(action.payload),
       };
     case GET_RECIPE_BY_NAME:
       return {
@@ -74,10 +84,7 @@ const rootReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        recipes:
-          action.payload.length > 0
-            ? filterState
-            : state.recipesCopy.concat(state.created),
+        recipes: action.payload.length > 0 ? filterState : state.recipesCopy,
       };
 
     case FILTER_BY_ORDER:
@@ -127,21 +134,19 @@ const rootReducer = (state = initialState, action) => {
     case RESET_RECIPES:
       return {
         ...state,
-        recipes: state.recipesCopy.concat(state.created),
+        recipes: state.recipesCopy,
       };
 
     case RECIPES_CREATED:
       return {
         ...state,
-        recipes: state.created,
+        recipes: state.recipesCopy.filter((el) => el.createdInDb === true),
       };
 
     case CLEAN_STATE:
-      let resetState;
-      if (action.payload === "recipe") resetState = {};
       return {
         ...state,
-        recipe: resetState,
+        recipe: {},
       };
 
     default:

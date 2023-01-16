@@ -35,6 +35,7 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         defaultValue: 0,
       },
+      createdInDb: { type: DataTypes.BOOLEAN, defaultValue: true },
     },
     {
       timestamps: false,

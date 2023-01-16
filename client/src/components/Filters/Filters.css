@@ -25,15 +25,16 @@
 }
 
 /* CONTAINERS FILTERS */
-.container-filter-diets{
-    width:max-content;
-    height: max-content;
+.container-filter-diets {
+    width: max-content;
+    height: 50%;
     display: flex;
     flex-direction: column;
     background-color: transparent;
     align-items: center;
+    justify-content: center;
     padding: 0;
-    margin:0;
+    margin: 0;
 }
 
 .diets-main-container{
@@ -50,12 +51,13 @@
 
 .container-options-selected{
     width: 100%;
-    height: max-content;
+    height: 50%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    gap:5px;
     justify-content: center;
-    background-color: transparent;
+    background-color: black;
     
 }
 
@@ -88,8 +90,6 @@
     padding: 0;
     padding-left: 25px;
     padding-right: 25px;
-    margin-top: 10px;
-    margin-bottom: 10px;
     font-weight: 400;
     font-size: 13px;
     width:max-content;
@@ -97,6 +97,10 @@
     cursor: pointer;
     background-color: transparent;
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .select-filter:hover{
@@ -176,33 +180,43 @@ option{
     font-weight: 600;
     font-size: 12px;
     padding: 0;
-    height: max-content;
+    height: 100%;
     width: max-content;
     display: flex;
     flex-direction: row;
-    border: 2px solid #FFC200;
     align-items: center;
     justify-content: space-between;
     padding-left: 10px;
-    color: #FFC200;
-    background-color: black;
+    color: #ffc200;
+
+
 }
 
 .diet-select{
     margin:0;
     padding:0;
+    background-color: transparent;
+    background: transparent;
 }
 
 .btn-close{
     padding:0;
-    margin-left:15px;
-    margin-right: 10px;
+    padding-left:15px;
+    padding-right: 10px;
+    margin-bottom:2px;
     background-color: transparent;
-    color:#FFC200;
+    color:black;
     border: none;
     font-family: 'Alexandria', sans-serif;
     font-weight: 600;
     font-size: 15px;
+    height:100%;
+}
+
+.btn-close:hover{
+    color:red;
+    cursor: pointer;
+    
 }
 
 hr{
@@ -210,9 +224,23 @@ hr{
     border: 0,5px solid #FFC200;
 }
 
+
 .main-cont-filt{
     width:100%;
-    height: 6%;
+    height: max-content;
+    min-height: 4%;
+    max-height: 8%;
+    padding:0;
+    margin:0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
     padding-left: 10%;
-    padding-right:10%
+    padding-right:10%;
+    justify-content: space-around;
+    background-color: #FFC200;
+    
 }
+
+

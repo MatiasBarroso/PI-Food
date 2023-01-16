@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect  } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { cleanUpState, getRecipe } from '../../redux/actions'
 import "./RecipeDetails.css"
 import RatingStars from "../RatingStars/RatingStars"
 import Loading from '../Loading/Loading'
+
 
 const RecipeDetails = () => {
 
@@ -13,14 +14,11 @@ const RecipeDetails = () => {
   const {recipe, diets} = useSelector(state => state)
   const history = useHistory()
 
-
-  
-  
   useEffect(() => {
     dispatch(getRecipe(id));
 
     return () => {
-      dispatch(cleanUpState('recipe'))
+      dispatch(cleanUpState())
     }
   },[dispatch, id])
 
@@ -31,7 +29,7 @@ const RecipeDetails = () => {
 
   return (
     <div className='container-r-id'>
-      {!recipe.name ?  <Loading/> : <div className='container-details'>
+      {recipe && !recipe.name ?  <Loading/> : <div className='container-details'>
         <div className='container-img-title'>
           <h2 className='rec-name'>{recipe.name}</h2>
           <img className='rec-img' src={recipe.image} alt={recipe.name}/>
@@ -41,11 +39,11 @@ const RecipeDetails = () => {
         <h3 className='rec-summary'>{recipe.summary}</h3>
         <h2>Step by step</h2>
         <hr></hr>
-        <div>
-          {recipe.stepByStep?.map((el, index) => <div className='sbs-cont' key={recipe.id++}>
-            <p className='rec-num'>{index + 1}</p>
+        <div className='cont-sbs-details'>
+          {recipe.stepByStep.length > 0 ? recipe.stepByStep.map((el, i) => <div className='sbs-cont' key={i + 10 * 2}>
+            <p className='rec-num'>{i + 1}</p>
             <p className='rec-step' >{el.split(':')[1]}</p>
-            </div>)}
+            </div>) : 'NO RESULTS'}
         </div>
         <div className="hs-diets-cont-det">
           <div className="hs-cont-details">
@@ -63,7 +61,7 @@ const RecipeDetails = () => {
             <div className='diets-types-cont'>
               {diets?.map((el, index)=> <div className='diet-type' key={index}>
                 <p className='dt'>{el.name}</p>
-                <i className={recipe.diets?.includes(el.name) ? "gg-check" : "gg-close"}></i>
+                <i className={recipe.diets?.includes(el.name) ? "gg-check-det" : "gg-close-det"}></i>
               </div>)}
               {/* {recipe.diets?.map((el, index)=> <div className='diet-type' key={index}>
                 <p className='dt'>{el}</p>
