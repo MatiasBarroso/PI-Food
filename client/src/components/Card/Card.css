@@ -1,7 +1,7 @@
 .container-card{
     display: flex;
     flex-direction: column;
-    margin:15px;
+  
     width:250px;
     height:360px;
     background-color: white;
@@ -54,6 +54,7 @@
     align-items: center;
     padding-left:15px;
     padding-right:15px;
+    margin-top: 12px;
     color: black;
     text-align: center;
     height: 30px;
@@ -67,7 +68,7 @@
     padding-right:15px;
     font-family: 'Alexandria', sans-serif;
     font-weight: 400;
-    font-size: 10px;
+    font-size: 11px;
     color: black;
     text-align: start;
     margin-top: 10px;
@@ -75,7 +76,7 @@
 
 .img-card{
     width:250px;
-    max-height:250px;
+    max-height:200px;
     border-radius: 5px 5px 0 0;
 }
 

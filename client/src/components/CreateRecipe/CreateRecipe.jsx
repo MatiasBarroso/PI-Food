@@ -185,7 +185,7 @@ const CreateRecipe = () => {
 
   useEffect(() => {
     if(state.created?.some(el => el.name === nameConverter(data.name))){
-    setData({
+      setData({
       name: "",
       summary: "",
       healthScore: 1,
@@ -200,7 +200,9 @@ const CreateRecipe = () => {
       image: '',
     })
     setInputs([{ value: "" , num: 1 }])
-    alert('Your recipes has been created successfully')
+    console.log('useEffect');
+    alert('Your recipes has been created successfully');
+    
   }
   },[state.created, data])
 
@@ -330,7 +332,7 @@ const CreateRecipe = () => {
                   <button className='hs-counter' type='button' value='next' onClick={scoreOnClick}>+</button>
                 </div>
                 <div className='diets-cr-cont'>
-                  <select className='select-filter-create' value={data.diets.length === 0 ? 'Select Diets' : data.diets } onChange={handleDietsChange}>
+                  <select className='select-filter-create' value={data.diets.length === 0 ? 'Select Diets' : data.diets[data.diets.length - 1] } onChange={handleDietsChange}>
                   <option disabled defaultValue>Select Diets</option>
                   {state && state.diets?.map(diet => 
                     <option key={diet.id} value={diet.name}>{ diet.name }</option>)}

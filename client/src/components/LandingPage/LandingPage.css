@@ -7,88 +7,102 @@
     padding:0;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     background-color: #000000;
-    background-image: url("../../assets/lp/1x/bg-lp_Mesa\ de\ trabajo\ 1.png");
+    background-image: url("../../assets/lp/1x/bg-home_Mesa\ de\ trabajo\ 1-01.png");
     background-attachment: fixed;
     background-size: cover;
 }
 
-
+.bg-yellow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding:0;
+    background-image: url('../../assets/lp/1x/SVG/bg-lp-yellow.svg');
+    background-size:auto;
+    background-repeat: no-repeat;
+    background-position:right;
+}
 
 .title-container{
-    width: 80%;
-    height: 50%;
+    width: 40%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 600px;
-    margin-bottom: 100px;
+    background-color: transparent;
+    position:relative;
+    left:10%;
 }
 
 .title{
-    background-color: transparent;
-    width:400px;
-    margin:0;
-    padding:0;
-    font-family: 'Alexandria', sans-serif;
-    font-weight: 800;
-    letter-spacing: -3px;
-    font-size: 90px;
-    text-align: center;
-    color: rgb(27, 209, 179);
-    text-shadow: 0em 0em 0.2em black;    
+    width: 100%;
 }
 
-.subtitle{
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-right: 50px;
-    margin-left: 50px;
-    padding:0;
+.intro-app{
     font-family: 'Alexandria', sans-serif;
-    font-weight: 400;
-    letter-spacing: -1px;
-    font-size: 30px;
+    font-weight: 200;
+    color:white;
+    font-size: 20px;
+    padding-right: 25px;
+    padding-left: 25px;
     text-align: center;
-    color: white;
+}
+
+.food-img{
+    width:60%;
+    margin-left: 160px;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222);
 }
 
 .enter-btn{
-    height: 50px;
-    width: 250px;
-    margin-top: 50px;
-    font-family: 'gloss_and_bloomregular', sans-serif;
-    font-weight: 600;
-    font-size: 60px;
+    height: 20px;
+    width: 150px;
+    font-family: 'Alexandria', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
     text-decoration: none;
-    color: rgb(255, 255, 255);
-    text-shadow: 0em 0em 0.2em rgb(255, 255, 255);
+    color: black;
     padding: 10px 28px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    
+    background-color: #FFC200;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .enter-btn:hover{
     color: #FFC200;
+    background-color: black;
     text-shadow: 0em 0em 0.2em #FFC200;  
     
 }
 
-.img-container{
-    margin: 0;
-    padding: 0;
+.icons-lp{
     width: 100%;
-    height: 50px;
+    height:max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
 }
 
+.i-lp{
+    width:30px
+}
 
-
-.img02{
-    width:500px;
+a{
+    width: max-content;
+    height: max-content;
+    margin:0;
+    padding:0;
+    
 }

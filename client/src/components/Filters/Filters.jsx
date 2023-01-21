@@ -75,7 +75,7 @@ const Filters = () => {
 
   const onClickCreated = (e) => {
     e.preventDefault()
-    if(created.length === 0) return;
+    if(created.length === 0) return alert("You haven't created any recipes yet")
     dispatch(createdRecipes())
   }
 

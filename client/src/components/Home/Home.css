@@ -20,7 +20,8 @@
 
 .container-main-cards{
     max-width: 100vw;
-    height: 63%;
+    height: 65%;
+    width: 100%;
     align-items: center;
     justify-content: center;
     display: flex;
