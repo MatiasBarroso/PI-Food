@@ -5,11 +5,13 @@ import RatingStars from '../RatingStars/RatingStars'
 import ReadMore from '../ReadMore/ReadMore'
 
 const Card = ({name, image, score, id, summary}) => {
+
+  const imgNotFound='https://img.freepik.com/fotos-premium/manos-femeninas-sostienen-cubiertos-sobre-plato-vacio-naranja_185193-33404.jpg'
   
   return (
     <Link to={`/recipes/${id}`} className='container-card' >
       <div className='card-item-cont' key={id}>
-        <img src={image} className="img-card" alt={name} />
+        <img src={image ? image : imgNotFound} className="img-card" alt={name} />
         <div className='card-title-summary'>
           <div className='r-name-cont'>
             <p className='r-name'>{name || "Your Food"}</p>
