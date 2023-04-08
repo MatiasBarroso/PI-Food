@@ -1,7 +1,7 @@
 const axios = require("axios");
 const { Recipe, Diet } = require("../db.js");
 require("dotenv").config();
-const { API_KEY7 } = process.env;
+const { API_KEY2 } = process.env;
 
 /!*    AXIOS INSTANCE (CORRIGE PROBLEMAS EN LA CONFIG DE AXIOS)    *!/;
 
@@ -12,12 +12,13 @@ const recipesApi = axios.create({
   },
 });
 
-/*      ASYNC FUNCTIONS      */ const getApiRecipes = async () => {
+/*      ASYNC FUNCTIONS      */
+
+const getApiRecipes = async () => {
   const resAxios = await recipesApi(
-    `/complexSearch?apiKey=${API_KEY7}&addRecipeInformation=true&number=100`
+    `/complexSearch?apiKey=${API_KEY2}&addRecipeInformation=true&number=100`
   );
   const { results } = resAxios.data;
-
   const dataMap = results.map((el) => {
     const stepByStep =
       el.analyzedInstructions[0] && el.analyzedInstructions[0].steps
@@ -72,42 +73,6 @@ const getAllRecipes = async () => {
   const dbRecipes = await getDbRecipes();
   return apiRecipes.concat(dbRecipes);
 };
-
-// const getApiById = async (id) => {
-//   const getApiRecipe = await recipesApi(
-//     `/${id}/information?apiKey=${API_KEY5}&addRecipeInformation=true&number=100`
-//   );
-//   const { data } = getApiRecipe;
-//   if (data) {
-//     const stepByStep =
-//       data.analyzedInstructions[0] && data.analyzedInstructions[0].steps
-//         ? data.analyzedInstructions[0].steps.map(
-//             (data) => "Step " + data.number.toString() + ": " + data.step
-//           )
-//         : [];
-
-//     const dietsConverts = data.diets.map((el) =>
-//       el
-//         .split(" ")
-//         .map((el) => nameConverter(el))
-//         .join(" ")
-//     );
-
-//     return {
-//       id: data.id,
-//       name: data.title,
-//       summary: removeTags(data.summary),
-//       healthScore: data.healthScore,
-//       stepByStep,
-//       image: data.image,
-//       diets: dietsConverts,
-//       types: data.dishTypes,
-//       score: data.spoonacularScore,
-//     };
-//   }
-
-//   return [];
-// };
 
 /!*    SECONDARY FUNCTIONS    *!/;
 

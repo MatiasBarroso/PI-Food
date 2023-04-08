@@ -64,7 +64,7 @@
     width: 150px;
     font-family: 'Alexandria', sans-serif;
     font-weight: 800;
-    font-size: 15px;
+    font-size: 0.9rem;
     text-decoration: none;
     color: black;
     padding: 10px 28px;
@@ -105,4 +105,84 @@ a{
     margin:0;
     padding:0;
     
+}
+
+@media (max-width: 1164px) {
+    .bg-yellow{
+        background-image: url('../../assets/lp/1x/food-lp.png');
+        background-size: cover;
+        background-position: 0 50px;
+        width: 50%;
+        height:40%
+    }
+    .lp-container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .food-img{
+        opacity: 0%;
+        height:100%;
+        margin-left:0;
+    }
+    .title-container{
+        height:60%;
+        width:40%;
+        left:0;
+        justify-content: end;
+    }
+    .title{
+        width:100%;
+    }
+    .intro-app{
+        font-size:20px;
+    }
+    .enter-btn{
+        width:140px;
+        height: 20px;
+        font-size:1rem;
+    }
+    .i-lp{
+        width:30px
+    }
+}
+
+@media (max-width: 820px){
+    .title{
+        width:100%;
+    }
+    .intro-app{
+        font-size:1rem;
+    }
+    .title-container{
+        height:50%;
+        width:50%;
+        left:0;
+        justify-content: end;
+    }
+    .enter-btn{
+        width:120px;
+        height: 20px;
+        font-size:0.8rem;
+    }
+    .i-lp{
+        width:30px
+    }
+    .bg-yellow{
+        background-position: center;
+    }
+}
+
+@media (max-width: 412px){
+    .intro-app{
+        font-size:10px;
+    }
+    .enter-btn{
+        width:90px;
+        height: 15px;
+        font-size:0.6rem;
+    }
+    .bg-yellow{  
+        background-size: 136%;
+    }
 }

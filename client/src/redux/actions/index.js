@@ -37,9 +37,7 @@ export function createRecipe(payload) {
 }
 
 export const getRecipesByName = (name) => (dispatch) => {
-  return axios(`http://localhost:3001/recipes?name=${name}`).then((res) => {
-    dispatch({ type: GET_RECIPE_BY_NAME, payload: res.data });
-  });
+  dispatch({ type: GET_RECIPE_BY_NAME, payload: name });
 };
 
 export const resetRecipes = () => {

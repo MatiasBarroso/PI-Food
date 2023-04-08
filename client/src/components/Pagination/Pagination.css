@@ -72,3 +72,23 @@
     color: #FFC200;
 }
 
+@media (max-width: 768px){
+    .pag-button-disabled{
+        width:25px;
+        height:25px;
+        font-size:10px;
+    }
+    .pag-button-active{
+        width:25px;
+        height:25px;
+        font-size:10px;
+    }
+    .pag-pr-nx{
+        width:25px;
+        height:25px;
+        font-size:10px;
+    }
+    .count-pagination{
+        font-size: 10px;
+    }
+}

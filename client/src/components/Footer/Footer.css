@@ -76,3 +76,19 @@ hr{
     margin:0;
 }
 
+@media (max-width: 768px){
+    .footer-cont{
+        height:10%;
+    }
+    .icons-cont{
+        gap:10px;
+    }
+    .icon-f{
+        width:15px;
+    }
+    .footer-cont-int-2{
+        font-size: 10px;
+        
+    }
+}
+

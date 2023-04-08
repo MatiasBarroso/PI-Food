@@ -5,7 +5,7 @@ import { cleanUpState, getRecipe } from '../../redux/actions'
 import "./RecipeDetails.css"
 import RatingStars from "../RatingStars/RatingStars"
 import Loading from '../Loading/Loading'
-
+import Nav from '../Nav/Nav'
 
 const RecipeDetails = () => {
 
@@ -29,6 +29,7 @@ const RecipeDetails = () => {
 
   return (
     <div className='container-r-id'>
+      <Nav />
       {recipe && !recipe.name ?  <Loading/> : <div className='container-details'>
         <div className='container-img-title'>
           <h2 className='rec-name'>{recipe.name}</h2>

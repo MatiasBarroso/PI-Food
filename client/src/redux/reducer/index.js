@@ -60,7 +60,12 @@ const rootReducer = (state = initialState, action) => {
     case GET_RECIPE_BY_NAME:
       return {
         ...state,
-        recipes: action.payload,
+        recipes:
+          action.payload === ""
+            ? state.recipesCopy
+            : state.recipesCopy.filter((el) =>
+                el.name.split(" ").some((el) => el.includes(action.payload))
+              ),
       };
     case FILTER_BY_TYPE:
       const filterRecipes = function (r) {

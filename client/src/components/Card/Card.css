@@ -87,3 +87,42 @@
     flex-direction: column;
     align-items: center;
 }
+
+@media (max-width: 768px){
+    .container-card{
+        width:200px;
+        height:290px;
+    }
+    .card-item-cont{
+        width:200px;
+        height:290px;
+    }
+    .img-card{
+        width:200px;
+        max-height:200px;
+    }
+    .r-hs{
+        margin-bottom: 100px;
+        height: 30px;
+        font-size: 10px;
+    }
+    
+    .r-summary{
+        padding-left:10px;
+        padding-right:10px;
+        font-size: 8px;
+        margin-top: 6px;
+    }
+    .r-name{
+        padding-left:10px;
+        padding-right:10px;
+        font-size: 10px;
+    }
+    .card-title-summary{
+        width: 100%;
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

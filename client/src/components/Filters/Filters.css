@@ -236,11 +236,52 @@ hr{
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
-    padding-left: 10%;
-    padding-right:10%;
     justify-content: space-around;
     background-color: #FFC200;
-    
+}
+
+@media (max-width: 430px){
+    .main-cont-filt{
+        width:100%;
+        height: 12%;
+    }
+    .container-filter-diets {
+        width: max-content;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        background-color: transparent;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+@media (max-width: 910px){
+    .select-filter{
+        font-size: 0.6rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .btn-filt-cr-re{
+        font-size: 0.6rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .btn-filt{
+        font-size: 0.6rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .option-selected{
+        font-size: 0.6rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .container-options-selected{
+        font-size: 0.6rem;
+    }
 }
 
 

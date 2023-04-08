@@ -16,9 +16,21 @@
 
 .nav-title{
     color: #FFC200;
-    font-size: 40px;
-    text-align: center;
     margin-left: 70px;
     width: 150px;
 }
 
+@media (max-width: 910px) {
+    .nav-title{
+        width: 120px;
+    }
+}
+
+@media (max-width: 430px) {
+    .container-nav{
+        height: 10%;
+    }
+    .nav-title{
+        width: 80px;
+    }
+}

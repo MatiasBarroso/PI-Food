@@ -1,13 +1,18 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import "./SearchBar.css"
-import { getRecipesByName } from '../../redux/actions'
-import searchIcon from '../../assets/lp/search-icon.png'
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import "./SearchBar.css";
+import { getRecipesByName } from '../../redux/actions';
+import searchIcon from '../../assets/lp/search-icon.png';
+import { nameConverter } from '../CreateRecipe/CreateRecipe.modules';
 
 const SearchBar = () => {
 
     const [searchInput, setSearchInput] = useState("")
     const dispatch = useDispatch()
+
+    useEffect(() => {
+      dispatch(getRecipesByName(nameConverter(searchInput)));
+    }, [dispatch, searchInput])
   
 
     const handleChange = (e) => {

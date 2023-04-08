@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import "./Cards.css";
 import { useState  } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Card from '../Card/Card';
 import Pagination from '../Pagination/Pagination';
 import Loading from '../Loading/Loading';
