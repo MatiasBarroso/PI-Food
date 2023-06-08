@@ -5,6 +5,7 @@ import { filterByOrder, filterByScore, filterByType, resetRecipes } from '../../
 import { Link } from 'react-router-dom';
 import { createdRecipes } from '../../redux/actions';
 
+
 const Filters = () => {
 
   //              LOCAL STATES               //

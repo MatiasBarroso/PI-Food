@@ -3,21 +3,29 @@
 .container-nav{
     margin: 0;
     width: 100%;
-    height: 15%;
+    max-height: 100px;
+    height:15%;
     padding-top: 0;
     padding-bottom:0;
     display:flex;
-    background-color: transparent;
     flex-direction: row;
     align-items:center;
     text-align: center;
     justify-content: space-between;
+    background-color: transparent;
+}
+
+.cont-sb{
+    height:100%;
+    padding:0;
+    width:max-content;
+    margin-left: 70px;
 }
 
 .nav-title{
     color: #FFC200;
+    width: 110px;
     margin-left: 70px;
-    width: 150px;
 }
 
 @media (max-width: 910px) {
