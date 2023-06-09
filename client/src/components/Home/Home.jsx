@@ -11,12 +11,14 @@ function Home() {
 
   return (
     <div className="Home">
-      <Nav />
-      <Filters />
-      {/* <div className="container-main-cards">
-        <Cards /> 
+      <div className="cont-nav-fil">
+        <Nav />
+        <Filters />
       </div>
-      <Footer/> */}
+        <div className="container-main-cards">
+          <Cards /> 
+        </div>
+      {/* <Footer/> */}
     </div>
   );
 }

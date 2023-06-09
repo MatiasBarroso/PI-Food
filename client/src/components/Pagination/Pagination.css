@@ -1,30 +1,30 @@
 .pagination{
-    width: 100%; 
+    width: max-content;
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-
-    height:100%;
+    gap: 10px;
+    position:fixed;
+    height:max-content;
 }
 
 .pag-button-disabled{
-    width:36px;
-    height: 36px;
+    width:26px;
+    height: 26px;
     text-align: center;
     align-items: center;
     background-color: transparent;
     font-family: 'Alexandria', sans-serif;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
     color:#FFC200;
     border: 1px solid #FFC200;
 }
 
 .pag-button-active{
-    width:36px;
-    height: 36px;
+    width:26px;
+    height: 26px;
     text-align: center;
     align-items: center;
     background-color: #FFC200;
@@ -36,8 +36,8 @@
 }
 
 .pag-pr-nx{
-    width:36px;
-    height: 36px;
+    width:26px;
+    height: 26px;
     text-align: center;
     align-items: center;
     background-color: #FFC200;

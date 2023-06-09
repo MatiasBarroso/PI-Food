@@ -11,6 +11,7 @@
     -moz-box-shadow: -9px 13px 34px -13px rgba(0,0,0,0.75);
     text-decoration: none;
     align-items: center;
+    margin-bottom: 30px;
 }
 .container-card:hover{
     box-shadow: -9px 13px 34px -13px #FFC200;

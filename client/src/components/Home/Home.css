@@ -10,7 +10,11 @@
     background-color: transparent;
     background-attachment: fixed;
     background-size: cover;
-    
+}
+
+.cont-nav-fil{
+    width: 100%;
+    position: fixed;
 }
 
 ::-webkit-scrollbar {
@@ -19,13 +23,12 @@
 
 .container-main-cards{
     max-width: 100vw;
-    height: 65%;
+    height: max-content;
     width: 100%;
     align-items: center;
     justify-content: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 0;
     padding: 0;
 }

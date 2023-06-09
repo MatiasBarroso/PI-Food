@@ -227,7 +227,7 @@ hr{
 
 .main-cont-filt{
     width:100%;
-    height: max-content;
+    height: 30px;
     min-height: 4%;
     max-height: 8%;
     padding:0;
@@ -238,6 +238,7 @@ hr{
     flex-wrap: wrap;
     justify-content: space-around;
     background-color: #FFC200;
+    z-index: 2;
 }
 
 @media (max-width: 430px){
