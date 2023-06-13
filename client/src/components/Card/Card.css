@@ -14,9 +14,9 @@
     margin-bottom: 30px;
 }
 .container-card:hover{
-    box-shadow: -9px 13px 34px -13px #FFC200;
-    -webkit-box-shadow: -9px 13px 34px -13px #FFC200;
-    -moz-box-shadow: -9px 13px 34px -13px #FFC200;
+    box-shadow: -9px 9px 0  #FFC200;
+    -webkit-box-shadow: -9px 9px 0  #FFC200;
+    -moz-box-shadow: -9px 9px 0  #FFC200;
     
 }
 

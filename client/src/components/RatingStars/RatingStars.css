@@ -8,6 +8,7 @@
     margin:0;
     align-items: center;
     background-color: transparent;
+    z-index: 0;
 }
 
 .pointed {
@@ -21,6 +22,7 @@
     border-bottom: 0.7em solid var(--star-color);
     border-left: 1em solid transparent;
     transform: rotate(35deg);
+    z-index: 0;
    }
    .pointed:before {
     border-bottom: 0.8em solid var(--star-color);
@@ -34,6 +36,7 @@
     display: block;
     content:"";
     transform: rotate(-35deg);
+    z-index: 0;
    }
    .pointed:after {
     position: absolute;
@@ -47,6 +50,7 @@
     border-left: 1em solid transparent;
     transform: rotate(-70deg);
     content:"";
+    z-index: 0;
    }
 
 .not-pointed {
@@ -60,6 +64,7 @@
     border-bottom: 0.7em solid var(--star-color);
     border-left: 1em solid transparent;
     transform: rotate(35deg);
+    z-index: 0;
    }
    .not-pointed:before {
     border-bottom: 0.8em solid var(--star-color);
@@ -73,6 +78,7 @@
     display: block;
     content:"";
     transform: rotate(-35deg);
+    z-index: 0;
    }
    .not-pointed:after {
     position: absolute;
@@ -86,4 +92,5 @@
     border-left: 1em solid transparent;
     transform: rotate(-70deg);
     content:"";
+    z-index: 0;
    }

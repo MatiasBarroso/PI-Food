@@ -18,7 +18,7 @@ function Home() {
         <div className="container-main-cards">
           <Cards /> 
         </div>
-      {/* <Footer/> */}
+      <Footer/>
     </div>
   );
 }

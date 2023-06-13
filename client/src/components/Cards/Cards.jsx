@@ -9,7 +9,7 @@ import Loading from '../Loading/Loading';
 const Cards = () => {
 
   const [page, setPage] = useState(1);
-  const [limit] = useState(9)
+  const [limit] = useState(12)
 
 
 

@@ -7,9 +7,10 @@
     justify-content: center;
     width: 100%;
     height: max-content;
-    background: linear-gradient(-45deg, #000000, #151004, #000000, #151004);
+    background: linear-gradient(-45deg, #000000, #151004, #000000, #151004)
+    /* background: linear-gradient(-45deg, #000000, #151004, #000000, #151004);
 	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
+	animation: gradient 15s ease infinite; */
 }
 
 @keyframes gradient {

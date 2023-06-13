@@ -10,6 +10,7 @@
     background-color: #FFC200;
     padding-left: 19px;
     padding-right: 19px;
+    z-index:2;
 }
 
 .container-selected-filters{

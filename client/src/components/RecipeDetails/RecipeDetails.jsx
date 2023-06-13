@@ -33,12 +33,16 @@ const RecipeDetails = () => {
       {recipe && !recipe.name ?  <Loading/> : <div className='container-details'>
         <div className='container-img-title'>
           <h2 className='rec-name'>{recipe.name}</h2>
-          <img className='rec-img' src={recipe.image} alt={recipe.name}/>
         </div>
-        <h2>Summary</h2>
-        <hr></hr>
-        <h3 className='rec-summary'>{recipe.summary}</h3>
-        <h2>Step by step</h2>
+        <div className='container-img-sum'>
+          <img className='rec-img' src={recipe.image} alt={recipe.name}/>
+          <div>
+            <h2>Summary</h2>
+            <hr></hr>
+            <h3 className='rec-summary'>{recipe.summary}</h3>
+          </div>
+        </div>
+        <h2 className='sbs-title'>Step by step</h2>
         <hr></hr>
         <div className='cont-sbs-details'>
           {recipe.stepByStep.length > 0 ? recipe.stepByStep.map((el, i) => <div className='sbs-cont' key={i + 10 * 2}>
