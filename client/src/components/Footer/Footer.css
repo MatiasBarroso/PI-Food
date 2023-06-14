@@ -1,10 +1,9 @@
 .footer-cont{
     width:100%;
-    height:110px;
+    height:200px;
     background-color: #FFC200;
     display:flex;
     flex-direction: column;
-    padding:0;
     margin:0;
     align-items: center;
     justify-content: center;
@@ -19,10 +18,13 @@
 
 }
 
+.logo-form{
+    margin-left:50px;
+}
+
 .footer-cont-int{
     width:100%;
     height:max-content;
-    padding:0;
     margin:0;
     display: flex;
     flex-direction: row;
@@ -36,7 +38,7 @@
 .footer-cont-int-2{
     width:100%;
     height:max-content;
-    padding:10px;
+    padding-left:50px;
     margin:0;
     display: flex;
     flex-direction: row;

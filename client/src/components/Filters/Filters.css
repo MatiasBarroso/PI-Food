@@ -206,7 +206,7 @@ option{
     padding-right: 10px;
     margin-bottom:2px;
     background-color: transparent;
-    color:black;
+    color: #FFC400;
     border: none;
     font-family: 'Alexandria', sans-serif;
     font-weight: 600;
@@ -215,7 +215,7 @@ option{
 }
 
 .btn-close:hover{
-    color:red;
+    color:white;
     cursor: pointer;
     
 }

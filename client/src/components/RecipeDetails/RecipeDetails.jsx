@@ -29,7 +29,6 @@ const RecipeDetails = () => {
 
   return (
     <div className='container-r-id'>
-      <Nav />
       {recipe && !recipe.name ?  <Loading/> : <div className='container-details'>
         <div className='container-img-title'>
           <h2 className='rec-name'>{recipe.name}</h2>
@@ -43,7 +42,6 @@ const RecipeDetails = () => {
           </div>
         </div>
         <h2 className='sbs-title'>Step by step</h2>
-        <hr></hr>
         <div className='cont-sbs-details'>
           {recipe.stepByStep.length > 0 ? recipe.stepByStep.map((el, i) => <div className='sbs-cont' key={i + 10 * 2}>
             <p className='rec-num'>{i + 1}</p>

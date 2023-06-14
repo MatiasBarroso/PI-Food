@@ -21,6 +21,25 @@
     opacity: 95%;
 }
 
+.link-cont{
+    display: flex;
+    gap:10px;
+    font-family: 'Alexandria', sans-serif;
+    font-size: 14px;
+}
+
+.link-nav{
+    text-decoration: none;
+    color:#FFC200;
+}
+
+.link-nav:hover{
+    text-decoration: none;
+    color:white;
+    text-shadow: 0 0 5px #FFC200;
+}
+
+
 .nav-scroll{
     background: black;
 }

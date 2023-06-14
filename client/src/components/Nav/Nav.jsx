@@ -2,6 +2,7 @@ import React, {useState, useEffect } from 'react'
 import SearchBar from '../SearchBar/SearchBar';
 import "./Nav.css";
 import logoNav from "../../assets/lp/1x/Recurso2.png"
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Nav = () => {
 
@@ -22,7 +23,12 @@ const Nav = () => {
   return (
     <div className={`container-nav bg-white ${scrollPosition === 0 ? '' : ' nav-scroll'}`}>
         <img className='nav-title' src={logoNav} alt="img-nav"/>
-          <SearchBar />
+        <div className='link-cont'>
+          <Link to='/recipes' className='link-nav'>Home</Link>
+          <Link to='/recipe/create' className='link-nav'>Create</Link>
+        </div>
+
+        <SearchBar />
     </div>
   )
 }
