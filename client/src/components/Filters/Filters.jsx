@@ -81,42 +81,40 @@ const Filters = () => {
   }
 
   return (
-    <div className='main-cont-filt'>
-       <div className='container-filter-diets'>
-          <select className='select-filter' value={dietsState.length === 0 ? 'Filter By Diets' : dietsState[diets.length - 1] } onChange={handleOnChange}>
-                <option disabled defaultValue>
-                  Filter By Diets
-                </option>
-                {diets && diets.map(diet => 
-                <option key={diet.id} value={diet.name}>{ diet.name }</option>)}
+    <>
+      <div className='main-cont-filt'>
+        <div className='container-filter-diets'>
+            <select className='select-filter' value={dietsState.length === 0 ? 'Filter By Diets' : dietsState[diets.length - 1] } onChange={handleOnChange}>
+                  <option disabled defaultValue>
+                    Filter By Diets
+                  </option>
+                  {diets && diets.map(diet => 
+                  <option key={diet.id} value={diet.name}>{ diet.name }</option>)}
+            </select>
+          </div>
+        
+          <select className='select-filter' value={order === "" ? 'Alphabetic Order' : order} onChange={handleOnChangeOrder}>
+            <option disabled defaultValue>Alphabetic Order</option>
+            <option value='ASC'>ASCENDANT</option>
+            <option value='DESCENDANT'>DESCENDANT</option>
           </select>
-        </div>
       
-        <select className='select-filter' value={order === "" ? 'Alphabetic Order' : order} onChange={handleOnChangeOrder}>
-          <option disabled defaultValue>Alphabetic Order</option>
-          <option value='ASC'>ASCENDANT</option>
-          <option value='DESCENDANT'>DESCENDANT</option>
-        </select>
-     
-          <select className='select-filter' value={score === "" ? 'Health Score' : score} onChange={handleOnChangeScore}>
-                <option disabled defaultValue>Health Score</option>
-                <option value='up'>UP</option>
-                <option value='down'>DOWN</option>
-          </select>
-     
-        <button className='btn-filt' value='created' onClick={onClickCreated}>Created Recipes</button>
-        <button className='btn-filt' onClick={onClickReset}>Reset</button>
-        <Link to='/recipe/create'>
-          <button className='btn-filt-cr-re'>Create Your Recipe</button>
-        </Link>
-
+            <select className='select-filter' value={score === "" ? 'Health Score' : score} onChange={handleOnChangeScore}>
+                  <option disabled defaultValue>Health Score</option>
+                  <option value='up'>UP</option>
+                  <option value='down'>DOWN</option>
+            </select>
+      
+          <button className='btn-filt' value='created' onClick={onClickCreated}>Created Recipes</button>
+          <button className='btn-filt' onClick={onClickReset}>Reset</button>
+      </div>
       {dietsState.length > 0 && <div className='container-options-selected'>
-        {dietsState.map((d, index) => <div className='option-selected' key={index}>
-            <p className='diet-select'>{d}</p>
-            <button className='btn-close' type='button' value={d} onClick={(e) => onClose(e)}>x</button>
-          </div>)}
-      </div>}
-    </div>
+      {dietsState.map((d, index) => <div className='option-selected' key={index}>
+          <p className='diet-select'>{d}</p>
+          <button className='btn-close' type='button' value={d} onClick={(e) => onClose(e)}>x</button>
+        </div>)}
+    </div>}
+    </>
   )
 }
 

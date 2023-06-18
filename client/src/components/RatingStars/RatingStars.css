@@ -12,7 +12,7 @@
 }
 
 .pointed {
-    --star-color:orange;
+    --star-color:#FFC400;
     font-size:0.8em;
     position: relative;
     display: block;

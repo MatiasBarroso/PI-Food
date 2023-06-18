@@ -17,7 +17,6 @@
     -webkit-transition: background 300ms linear;
     -ms-transition: background 300ms linear;
     transition: background 300ms linear;
-    backdrop-filter: blur(10px);
     opacity: 95%;
 }
 
@@ -42,6 +41,8 @@
 
 .nav-scroll{
     background: black;
+    backdrop-filter: blur(10px);
+    z-index: 0;
 }
 
 .cont-sb{

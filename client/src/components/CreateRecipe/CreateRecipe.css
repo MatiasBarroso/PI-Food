@@ -146,11 +146,11 @@
     height: 30px;
     font-family: 'Alexandria', sans-serif;
     font-weight: 600;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     padding:0;
     padding-left:15px;
     border: none;
-    color: #FFC200;
+    color: black;
 }
 
 .error-style{
@@ -404,8 +404,8 @@
 
 .submit-btn:hover{
     background-color: #fff;
-    color: #FFC200;
-    box-shadow: 3px 1px 18px 5px #FFC200;
+    color: black;
+    box-shadow: 3px 1px 8px 1px #FFC200;
     border: none;
 }
 

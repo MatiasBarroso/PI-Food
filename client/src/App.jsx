@@ -7,8 +7,6 @@ import Home from "./components/Home/Home";
 import LandingPage from "./components/LandingPage/LandingPage";
 import RecipeDetails from "./components/RecipeDetails/RecipeDetails";
 import CreateRecipe from "./components/CreateRecipe/CreateRecipe";
-import Nav from "./components/Nav/Nav";
-import Filters from "./components/Filters/Filters";
 import Footer from "./components/Footer/Footer";
 
 function App() {
@@ -21,10 +19,6 @@ function App() {
 
   return (
     <div className="App">
-      <div className="cont-nav-fil">
-        <Nav />
-        <Filters />
-      </div>
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/recipes" component={Home} />
       <Route exact path="/recipes/:id" component={RecipeDetails} />

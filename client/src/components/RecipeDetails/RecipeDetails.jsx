@@ -7,6 +7,7 @@ import RatingStars from "../RatingStars/RatingStars"
 import Loading from '../Loading/Loading'
 import Nav from '../Nav/Nav'
 
+
 const RecipeDetails = () => {
 
   const { id } = useParams()
@@ -29,19 +30,24 @@ const RecipeDetails = () => {
 
   return (
     <div className='container-r-id'>
+      <div className='cont-nav-filters'>
+        <Nav />
+      </div>
       {recipe && !recipe.name ?  <Loading/> : <div className='container-details'>
         <div className='container-img-title'>
           <h2 className='rec-name'>{recipe.name}</h2>
         </div>
         <div className='container-img-sum'>
-          <img className='rec-img' src={recipe.image} alt={recipe.name}/>
-          <div>
-            <h2>Summary</h2>
+          <div className='cont-rec-img'>
+            <img className='rec-img' src={recipe.image} alt={recipe.name}/>
+          </div>
+          <div className='cont-sum'>
+            <h2 className='sum-title'>SUMMARY</h2>
             <hr></hr>
             <h3 className='rec-summary'>{recipe.summary}</h3>
           </div>
         </div>
-        <h2 className='sbs-title'>Step by step</h2>
+        <h2 className='sbs-title'>STEP BY STEP</h2>
         <div className='cont-sbs-details'>
           {recipe.stepByStep.length > 0 ? recipe.stepByStep.map((el, i) => <div className='sbs-cont' key={i + 10 * 2}>
             <p className='rec-num'>{i + 1}</p>
@@ -49,18 +55,19 @@ const RecipeDetails = () => {
             </div>) : 'NO RESULTS'}
         </div>
         <div className="hs-diets-cont-det">
-          <div className="hs-cont-details">
-            <h2>Health Score</h2>
-            <hr></hr>
-            <div className='card-hs'>
-              <p className='rec-hs'>{recipe.healthScore}</p>
-              <RatingStars score={recipe?.healthScore}/>
+          <div className="hs-cont-details-border">
+            <div className='hs-cont-details'>
+              <h2 className='hs-title'>Health Score</h2>
+              {/* <hr className='hr-hs'></hr> */}
+              <div className='card-hs'>
+                <p className='rec-hs'>{recipe.healthScore}</p>
+                <RatingStars score={recipe?.healthScore}/>
+              </div>
             </div>
           </div>
-          <hr className='mid-hr'></hr>
           <div className='diets-cont-details'>
             <h2>Diets</h2>
-            <hr></hr>
+            <hr className='hr-hs'></hr>
             <div className='diets-types-cont'>
               {diets?.map((el, index)=> <div className='diet-type' key={index}>
                 <p className='dt'>{el.name}</p>
@@ -73,7 +80,12 @@ const RecipeDetails = () => {
             </div>
           </div>
           </div>
-        <button className='bck-btn' onClick={goBackHandleClick}>GO BACK</button>
+        <button className='back-btn' onClick={goBackHandleClick} type='button'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+          </svg>
+          Back
+        </button>
       </div> }
     </div>
   )

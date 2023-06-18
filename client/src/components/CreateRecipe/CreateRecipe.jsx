@@ -304,9 +304,8 @@ const CreateRecipe = () => {
   
 
   const addStepClick = () => {
-    if(inputs.length < 8){
+   
     setInputs([...inputs, { value: '', num: inputs.length + 1 }]);
-  }
   }
 
   return (
@@ -351,10 +350,10 @@ const CreateRecipe = () => {
           </div>
           <div className='block-form'>
             <div className='sec3'>
-                  {inputs.length > 0 ? <div className='input-btn-cont'>
-                    <input className='input-step' name={inputs[0].num} type="text" placeholder={`Step`} value={inputs[0].value || ""} onChange={e => handleInputChange(e, 0)} />
-                    <button className='gg-close' type='button' value={inputs[0].num} onClick={inputsOnClose}>X</button>
-                    </div> : <div className='step-empty-input'></div>}
+                  {inputs.map((i, index) => <div className='input-btn-cont'>
+                      <input className='input-step' name={i.num} type="text" placeholder={`Step ${i.num}`} value={i.value || ""} onChange={e => handleInputChange(e, index)} />
+                      <button className='gg-close' type='button' value={i.num} onClick={inputsOnClose}>X</button>
+                    </div>)}
             </div>
             <div className='sec4'>
               <div className='sec2-btns'>
