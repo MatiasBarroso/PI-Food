@@ -13,6 +13,7 @@ export const RECIPES_CREATED = "RECIPES_CREATED";
 export const CLEAN_STATE = "CLEAN_STATE";
 
 export const getAllRecipes = () => (dispatch) => {
+  console.log("recipes get");
   return axios("http://localhost:3001/recipes").then((res) => {
     dispatch({ type: GET_ALL_RECIPES, payload: res.data });
   });
