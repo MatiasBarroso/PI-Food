@@ -13,8 +13,7 @@ export const RECIPES_CREATED = "RECIPES_CREATED";
 export const CLEAN_STATE = "CLEAN_STATE";
 
 export const getAllRecipes = () => (dispatch) => {
-  console.log("recipes get");
-  return axios("http://localhost:3001/recipes").then((res) => {
+  return axios("/recipes").then((res) => {
     dispatch({ type: GET_ALL_RECIPES, payload: res.data });
   });
 };
@@ -24,14 +23,14 @@ export const getRecipe = (id) => (dispatch) => {
 };
 
 export const getDiets = () => (dispatch) => {
-  return axios(`http://localhost:3001/diets`).then((data) => {
+  return axios(`/diets`).then((data) => {
     dispatch({ type: GET_DIETS, payload: data.data });
   });
 };
 
 export function createRecipe(payload) {
   return async function (dispatch) {
-    await axios.post(`http://localhost:3001/recipe`, payload).then((res) => {
+    await axios.post(`/recipe`, payload).then((res) => {
       return dispatch({ type: CREATE_RECIPE, payload: res.data });
     });
   };

@@ -8,6 +8,9 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import RecipeDetails from "./components/RecipeDetails/RecipeDetails";
 import CreateRecipe from "./components/CreateRecipe/CreateRecipe";
 import Footer from "./components/Footer/Footer";
+import axios from "axios";
+axios.defaults.baseURL = 'pi-food-production-ff23.up.railway.app';
+
 function App() {
   const dispatch = useDispatch();
 
