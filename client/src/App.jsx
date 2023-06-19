@@ -8,7 +8,6 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import RecipeDetails from "./components/RecipeDetails/RecipeDetails";
 import CreateRecipe from "./components/CreateRecipe/CreateRecipe";
 import Footer from "./components/Footer/Footer";
-
 function App() {
   const dispatch = useDispatch();
 
