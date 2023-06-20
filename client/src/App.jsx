@@ -7,11 +7,11 @@ import Home from "./components/Home/Home";
 import LandingPage from "./components/LandingPage/LandingPage";
 import RecipeDetails from "./components/RecipeDetails/RecipeDetails";
 import CreateRecipe from "./components/CreateRecipe/CreateRecipe";
-import Footer from "./components/Footer/Footer";
 import axios from "axios";
 
-axios.defaults.baseURL = 'https://pi-food-production-ff23.up.railway.app';
-console.log(axios.defaults.baseURL)
+// axios.defaults.baseURL = 'https://pi-food-production-ff23.up.railway.app';
+axios.defaults.baseURL = 'http://localhost:3001/';
+
 function App() {
   const dispatch = useDispatch();
 
@@ -26,7 +26,6 @@ function App() {
       <Route exact path="/recipes" component={Home} />
       <Route exact path="/recipes/:id" component={RecipeDetails} />
       <Route exact path="/recipe/create" component={CreateRecipe} />
-      <Footer/>
     </div>
   );
 }

@@ -45,9 +45,6 @@ const Cards = () => {
           }) : <p className='no-res'>No results found</p>}
         </div>}
       </div>
-      <div className='container-pagination'>
-        
-      </div>
     </div>
   )
 }

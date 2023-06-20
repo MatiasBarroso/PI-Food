@@ -4,14 +4,14 @@
     margin: 0;
     width: 100%;
     max-height: 100px;
-    height:15%;
+    height:70px;
     padding-top: 0;
     padding-bottom:0;
     display:flex;
     flex-direction: row;
     align-items:center;
     text-align: center;
-    justify-content: space-between;
+    justify-content: center;
     z-index: 2;
     background: transparent;
     -webkit-transition: background 300ms linear;
@@ -20,8 +20,17 @@
     opacity: 95%;
 }
 
+.cont-logo-nav{
+    width: 33%;
+    height: 100%;
+}
+
 .link-cont{
+    width: 33%;
+    height: 100%;
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap:10px;
     font-family: 'Alexandria', sans-serif;
     font-size: 14px;
@@ -42,7 +51,7 @@
 .nav-scroll{
     background: black;
     backdrop-filter: blur(10px);
-    z-index: 0;
+    z-index: 2;
 }
 
 .cont-sb{
@@ -53,9 +62,8 @@
 }
 
 .nav-title{
-    color: #FFC200;
     width: 110px;
-    margin-left: 70px;
+    
 }
 
 @media (max-width: 910px) {

@@ -6,6 +6,7 @@ import "./RecipeDetails.css"
 import RatingStars from "../RatingStars/RatingStars"
 import Loading from '../Loading/Loading'
 import Nav from '../Nav/Nav'
+import Footer from '../Footer/Footer'
 
 
 const RecipeDetails = () => {
@@ -87,6 +88,7 @@ const RecipeDetails = () => {
           Back
         </button>
       </div> }
+      <Footer />
     </div>
   )
 }

@@ -3,7 +3,7 @@
     height:200px;
     background-color: #FFC200;
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     margin:0;
     align-items: center;
     justify-content: center;
@@ -15,7 +15,8 @@
     display: flex;
     flex-direction: row;
     gap:15px;
-
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .logo-form{
@@ -23,8 +24,8 @@
 }
 
 .footer-cont-int{
-    width:100%;
-    height:max-content;
+    width:33%;
+    height:100%;
     margin:0;
     display: flex;
     flex-direction: row;
@@ -36,18 +37,22 @@
 }
 
 .footer-cont-int-2{
-    width:100%;
-    height:max-content;
-    padding-left:50px;
+    width:33%;
+    height:100%;
     margin:0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-family: 'Alexandria', sans-serif;
     font-weight: 400;
     font-size: 12px;
     
+}
+
+.footer-cont-int-2{
+    width: 33%;
+    height: 100%;
 }
 
 .icon-f{

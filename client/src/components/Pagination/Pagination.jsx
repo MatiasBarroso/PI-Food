@@ -82,6 +82,19 @@ const Pagination = ({ page, setPage, max, start, end }) => {
         })
     }
 
+  const [scrollPosition, setPosition] = useState(0);
+
+  const handleScroll = () => {
+    setPosition(window.scrollY);
+  };
+  useEffect(() => {
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
 
     // const onClickBtnPage = (e) => {
     //     e.preventDefault();
@@ -104,7 +117,7 @@ const Pagination = ({ page, setPage, max, start, end }) => {
     for(var i=0; i<max; i++) buttons.push(<button className={active && parseInt(active.page) === i+1 ? 'pag-button-active' : 'pag-button-disabled'} key={`box-${i}`} value={i+1} onClick={onClickBtnPage}>{i+1}</button>)
     
   return (
-    <div className='pagination'>
+    <div className={`pagination ${scrollPosition === 0 ? '' : ' nav-scroll'}`}>
         <button className='pag-pr-nx' onClick={prevPage} value={limitPage}>&#60;</button>
             {buttons.length > 0 && buttons.length <= 10 ? buttons : buttons?.slice(limitPage - 1, endPag)}
         <p className='count-pagination'>DE {max === 0 && buttons.length > 0 ? 1 : max}</p>
