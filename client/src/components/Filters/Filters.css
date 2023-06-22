@@ -27,13 +27,13 @@
 
 /* CONTAINERS FILTERS */
 .container-filter-diets {
-    width: max-content;
+    width: 33%;
     height: 50%;
     display: flex;
     flex-direction: column;
     background-color: transparent;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     padding: 0;
     margin: 0;
 }
@@ -54,12 +54,15 @@
     width: 100%;
     height: 50%;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
-    gap:5px;
+    background-color: black;
+    gap:10px;
     justify-content: center;
-    background-color: transparent;
-    
+    padding-top: 10px;
+    padding-bottom: 10px;
+    opacity: 95%;
 }
 
 .container-filter{
@@ -89,12 +92,10 @@
 .select-filter{
     font-family: 'Alexandria', sans-serif;
     padding: 0;
-    padding-left: 25px;
-    padding-right: 25px;
     font-weight: 400;
     font-size: 13px;
-    width:max-content;
-    height: max-content;
+    width:33%;
+    height: 100%;
     cursor: pointer;
     background-color: transparent;
     border: none;
@@ -181,14 +182,16 @@ option{
     font-weight: 600;
     font-size: 12px;
     padding: 0;
-    height: 100%;
-    width: max-content;
+    height: 30px;
+    width: 150px;
+    border: 1px solid #FFC400;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding-left: 10px;
     color: #ffc200;
+    overflow: hidden;
 
 
 }
@@ -228,43 +231,21 @@ hr{
 
 .main-cont-filt{
     width:100%;
-    height: 30px;
-    min-height: 4%;
-    max-height: 8%;
+    height: max-content;
     padding:0;
     margin:0;
     display: flex;
     flex-direction: row;
     align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     background-color: #FFC200;
     z-index: 2;
 }
 
-@media (max-width: 430px){
-    .main-cont-filt{
-        width:100%;
-        height: 12%;
-    }
-    .container-filter-diets {
-        width: max-content;
-        height: 50%;
-        display: flex;
-        flex-direction: column;
-        background-color: transparent;
-        align-items: center;
-        justify-content: center;
-        padding: 0;
-        margin: 0;
-    }
-}
 
-@media (max-width: 910px){
+/* @media (max-width: 910px){
     .select-filter{
         font-size: 0.6rem;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
     }
     .btn-filt-cr-re{
         font-size: 0.6rem;
@@ -284,6 +265,34 @@ hr{
     .container-options-selected{
         font-size: 0.6rem;
     }
+} */
+
+@media (min-width: 1165px){
+    .select-filter{
+        font-size: 0.7rem;
+        width: 33%;
+        max-width: 200px;
+        height: 30px;
+        padding-left: 5px;
+    }
 }
 
+@media (max-width: 1164px){
+    .select-filter{
+        font-size: 0.7rem;
+        width: 33%;
+        max-width: 200px;
+        height: 30px;
+        padding-left: 5px;
+    }
+}
 
+@media (max-width: 430px){
+    .select-filter{
+        font-size: 0.6rem;
+        width: 33%;
+        max-width: 200px;
+        height: 25px;
+        padding-left: 5px;
+    }
+}

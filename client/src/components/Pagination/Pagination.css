@@ -4,16 +4,14 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    top:100px;
     gap: 10px;
-    position:fixed;
     height:max-content;
-    background: transparent;
+    background: black;
     -webkit-transition: background 300ms linear;
     -ms-transition: background 300ms linear;
     transition: background 300ms linear;
     opacity: 95%;
-    z-index: 2;
+    z-index: 0;
 }
 
 .pag-button-disabled{

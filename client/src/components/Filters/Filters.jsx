@@ -80,33 +80,34 @@ const Filters = () => {
     dispatch(createdRecipes())
   }
 
+
+
   return (
     <>
       <div className='main-cont-filt'>
-        <div className='container-filter-diets'>
             <select className='select-filter' value={dietsState.length === 0 ? 'Filter By Diets' : dietsState[diets.length - 1] } onChange={handleOnChange}>
                   <option disabled defaultValue>
-                    Filter By Diets
+                    Diets
                   </option>
                   {diets && diets.map(diet => 
                   <option key={diet.id} value={diet.name}>{ diet.name }</option>)}
             </select>
-          </div>
+         
         
           <select className='select-filter' value={order === "" ? 'Alphabetic Order' : order} onChange={handleOnChangeOrder}>
-            <option disabled defaultValue>Alphabetic Order</option>
-            <option value='ASC'>ASCENDANT</option>
-            <option value='DESCENDANT'>DESCENDANT</option>
+            <option disabled defaultValue>Order</option>
+            <option value='ASC'>A/Z</option>
+            <option value='DESCENDANT'>Z/A</option>
           </select>
       
             <select className='select-filter' value={score === "" ? 'Health Score' : score} onChange={handleOnChangeScore}>
-                  <option disabled defaultValue>Health Score</option>
+                  <option disabled defaultValue>Score</option>
                   <option value='up'>UP</option>
                   <option value='down'>DOWN</option>
             </select>
       
-          <button className='btn-filt' value='created' onClick={onClickCreated}>Created Recipes</button>
-          <button className='btn-filt' onClick={onClickReset}>Reset</button>
+          {/* <button className='btn-filt' value='created' onClick={onClickCreated}>Created Recipes</button>
+          <button className='btn-filt' onClick={onClickReset}>Reset</button> */}
       </div>
       {dietsState.length > 0 && <div className='container-options-selected'>
       {dietsState.map((d, index) => <div className='option-selected' key={index}>

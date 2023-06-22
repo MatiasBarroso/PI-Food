@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div className='footer-cont'>
       <div className='footer-cont-int'>
-      <img src={LogoForm} alt='logo-eatime' width={'150px'}/>
+      <img src={LogoForm} alt='logo-eatime' className='logo-form'/>
       </div>
       <div className='footer-cont-int-2'>
 
@@ -15,9 +15,9 @@ const Footer = () => {
           <a href='https://www.linkedin.com/in/matias-barroso-77b4058a/' target="_blank" rel="noreferrer"><img className='icon-f' src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt='github-icon'/></a>
           <a href='https://www.instagram.com/' target="_blank" rel="noreferrer"><img className='icon-f' src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png" alt='github-icon'/></a>
         </div>
-        <p className='f-name'>Matias Barroso</p>
-        <p className='f-rights' > | Eatime |  © 2022 - 2023 All rights reserved</p>
-
+        <p className='f-name'>Matias Barroso | Eatime</p>
+        <p className='f-rights' >© 2022 - 2023</p>
+        <p className='f-rights' >All rights reserved</p>
       </div>
   </div>
   )

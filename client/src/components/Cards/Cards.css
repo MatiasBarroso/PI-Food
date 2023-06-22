@@ -34,16 +34,6 @@
     justify-content: center;
 }
 
-.container-pagination{
-    display: flex;
-    margin:0;
-    width: 100%;
-    height: max-content;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-}
-
 .no-res{
     font-family: 'Alexandria', sans-serif;
     font-weight: 600;

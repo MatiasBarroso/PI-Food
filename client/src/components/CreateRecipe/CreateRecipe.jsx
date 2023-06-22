@@ -310,7 +310,9 @@ const CreateRecipe = () => {
 
   return (
     <div className='container-creater'>
-      <Nav />
+      <div className='cont-nav-cr'>
+        <Nav />
+      </div>
       <div className='cont-form'>
         <form className='container-form' onSubmit={handleSubmit}>
           <div className='title-form-cont'>

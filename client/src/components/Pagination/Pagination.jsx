@@ -5,7 +5,7 @@ import './Pagination.css';
 const Pagination = ({ page, setPage, max, start, end }) => {
     
     const [limitPage, setLimitPage] = useState(1)
-    const [endPag, setEndPag] = useState(10)
+    const [endPag, setEndPag] = useState(5)
     const [active, setActive] = useState({
         type: false,
         page: 0
@@ -22,7 +22,7 @@ const Pagination = ({ page, setPage, max, start, end }) => {
               page: 1
             })
             setLimitPage(1)
-            setEndPag(10)
+            setEndPag(5)
         }
     }, [state, setPage])
 
@@ -34,8 +34,8 @@ const Pagination = ({ page, setPage, max, start, end }) => {
             type: true,
             page: page + 1
           })
-          setLimitPage(limitPage + 9)
-          setEndPag(endPag + 10)
+          setLimitPage(limitPage + 5)
+          setEndPag(endPag + 5)
         }
         if(page < max && page !== endPag){
             setPage(page + 1)
@@ -53,8 +53,8 @@ const Pagination = ({ page, setPage, max, start, end }) => {
               type: true,
               page: page - 1
             })
-            setLimitPage(limitPage - 9)
-            setEndPag(endPag - 10)
+            setLimitPage(limitPage - 5)
+            setEndPag(endPag - 5)
           }
           if(page > 1 && page !== limitPage){
               setPage(page - 1)
@@ -67,14 +67,6 @@ const Pagination = ({ page, setPage, max, start, end }) => {
 
     const onClickBtnPage = (e) => {
         e.preventDefault();
-        if(parseInt(e.target.value) === endPag){
-            setLimitPage(limitPage + 9)
-            setEndPag(endPag + 10)
-        }
-        if(parseInt(e.target.value) === limitPage && parseInt(e.target.value) !== 1){
-            setLimitPage(limitPage - 9)
-            setEndPag(endPag - 10)
-        }
         setPage(parseInt(e.target.value))
         setActive({
             type:true,
