@@ -75,13 +75,13 @@
 
 .cont-rec-img{
     width: 30%;
-    height:100%;
-}
-
-.rec-img{
     position: relative;
     right: 50px;
     bottom: 20px;
+}
+
+.rec-img{
+   
     width: 100%;
 }
 
@@ -97,7 +97,7 @@
 .rec-summary{
     color: khaki; 
     height:max-content;
-    font-size: 1.05vw;
+    font-size: 1.1vw;
     font-weight: 400;
 }
 

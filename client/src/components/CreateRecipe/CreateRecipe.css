@@ -8,6 +8,12 @@
     padding: 0;
 }
 
+.cont-nav-cr{
+    width: 100%;
+    height: max-content;
+    position: fixed;
+}
+
 .container-form{
     margin: 0;
     padding:0;
@@ -19,10 +25,10 @@
     width:50%;
     max-width: 800px;
     height: 90%;
+    margin-top: 50px;
 }
 
 .cont-form{
-    padding-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: start;
     width: 100%;
+    min-height: 100vh;
     height: max-content;
     background: linear-gradient(-45deg, #000000, #151004, #000000, #151004)
     /* background: linear-gradient(-45deg, #000000, #151004, #000000, #151004);

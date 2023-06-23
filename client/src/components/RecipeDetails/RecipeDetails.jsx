@@ -1,4 +1,4 @@
-import React, { useEffect  } from 'react'
+import React, { useEffect, useState  } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { cleanUpState, getRecipe } from '../../redux/actions'
@@ -6,10 +6,13 @@ import "./RecipeDetails.css"
 import RatingStars from "../RatingStars/RatingStars"
 import Loading from '../Loading/Loading'
 import Nav from '../Nav/Nav'
+import Footer from '../Footer/Footer'
+import NavMobile from '../NavMobile'
 
 
 const RecipeDetails = () => {
 
+  const [screenWidth, setScreenWidth] = useState(0);
   const { id } = useParams()
   const dispatch = useDispatch()
   const {recipe, diets} = useSelector(state => state)
@@ -28,17 +31,29 @@ const RecipeDetails = () => {
     history.push("/recipes")
   }
 
+  const handleScroll = () => {
+    setScreenWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className='container-r-id'>
       <div className='cont-nav-filters'>
-        <Nav />
+      {screenWidth > 430 ? <Nav /> : <NavMobile />}
       </div>
       {recipe && !recipe.name ?  <Loading/> : <div className='container-details'>
         <div className='container-img-title'>
           <h2 className='rec-name'>{recipe.name}</h2>
         </div>
         <div className='container-img-sum'>
-          <div className='cont-rec-img'>
+          <div className='cont-rec-img' >
             <img className='rec-img' src={recipe.image} alt={recipe.name}/>
           </div>
           <div className='cont-sum'>
@@ -87,6 +102,7 @@ const RecipeDetails = () => {
           Back
         </button>
       </div> }
+      <Footer />
     </div>
   )
 }

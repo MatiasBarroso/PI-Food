@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createRecipe } from '../../redux/actions';
 import { useHistory } from 'react-router-dom';
 import { nameConverter } from './CreateRecipe.modules';
-import LogoForm from '../../assets/lp/1x/1x/eatime-logo-form.png';
-import Footer from '../Footer/Footer';
+import Footer from '../Footer/Footer'
+import Nav from '../Nav/Nav';
 
 const CreateRecipe = () => {
 
@@ -310,6 +310,9 @@ const CreateRecipe = () => {
 
   return (
     <div className='container-creater'>
+      <div className='cont-nav-cr'>
+        <Nav />
+      </div>
       <div className='cont-form'>
         <form className='container-form' onSubmit={handleSubmit}>
           <div className='title-form-cont'>
@@ -370,6 +373,7 @@ const CreateRecipe = () => {
           Back
         </button>
       </div>
+      <Footer />
     </div>
   )
 }

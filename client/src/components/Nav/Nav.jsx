@@ -22,13 +22,16 @@ const Nav = () => {
 
   return (
     <div className={`container-nav bg-white ${scrollPosition === 0 ? '' : ' nav-scroll'}`}>
+      <div className='cont-logo-nav'>
         <img className='nav-title' src={logoNav} alt="img-nav"/>
-        <div className='link-cont'>
-          <Link to='/recipes' className='link-nav'>Home</Link>
-          <Link to='/recipe/create' className='link-nav'>Create</Link>
-        </div>
+      </div>
+        
+      <div className='link-cont'>
+        <Link to='/recipes' className='link-nav'>Home</Link>
+        <Link to='/recipe/create' className='link-nav'>Create</Link>
+      </div>
 
-        <SearchBar />
+      <SearchBar />
     </div>
   )
 }

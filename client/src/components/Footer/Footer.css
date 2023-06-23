@@ -1,9 +1,9 @@
 .footer-cont{
     width:100%;
     height:200px;
-    background-color: #FFC200;
+    background-color: #FFC400;
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     margin:0;
     align-items: center;
     justify-content: center;
@@ -15,33 +15,35 @@
     display: flex;
     flex-direction: row;
     gap:15px;
-
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .logo-form{
-    margin-left:50px;
+    width: 25vw;
+    height: max-content;
+    max-width: 150px;
 }
 
 .footer-cont-int{
-    width:100%;
-    height:max-content;
+    width:50%;
+    height:100%;
     margin:0;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: start;
     font-family: 'Alexandria', sans-serif;
     font-weight: 400;
     font-size: 12px;
 }
 
 .footer-cont-int-2{
-    width:100%;
-    height:max-content;
-    padding-left:50px;
+    width:50%;
+    height:100%;
     margin:0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-family: 'Alexandria', sans-serif;
@@ -49,6 +51,7 @@
     font-size: 12px;
     
 }
+
 
 .icon-f{
     width:20px;
@@ -78,19 +81,41 @@ hr{
     margin:0;
 }
 
-@media (max-width: 768px){
+
+
+@media (max-width: 430px){
     .footer-cont{
-        height:10%;
+        height:250px;
+        flex-direction: column;
+        justify-content: center;
     }
-    .icons-cont{
-        gap:10px;
+    .footer-cont-int{
+        justify-content: center;
+        height: max-content;
     }
-    .icon-f{
-        width:15px;
-    }
+
     .footer-cont-int-2{
-        font-size: 10px;
-        
+        gap: 1px;
+        height: max-content;
+    }
+    .logo-form{
+        width: 150px;
     }
 }
 
+@media (min-width: 431px){
+    
+    .footer-cont-int{
+        justify-content: center;
+        align-items: center;
+        height: max-content;
+    }
+
+    .footer-cont-int-2{
+        gap: 1px;
+        height: max-content;
+    }
+    .logo-form{
+        width: 150px;
+    }
+}
