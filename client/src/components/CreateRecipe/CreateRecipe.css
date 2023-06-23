@@ -454,3 +454,12 @@
     border-style: dashed;
     color:rgb(19, 19, 19)
 }
+
+@media (max-width:1200px){
+    .container-form {
+        width: 80%;
+    }
+    .title-form{
+        font-size: 6vw;
+    }
+}

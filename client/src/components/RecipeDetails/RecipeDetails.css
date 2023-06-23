@@ -365,20 +365,17 @@
         width: 100%;
         position:static;
     }
-
     .cont-sum{
         width: 100%;
         position:sticky;
         padding: 0;
         height: max-content;
     }
-
     .sum-title{
         padding-top: 8px;
         font-size: 16px;
         padding-left: 15px;
     }
-
     .rec-img{
         width: 100%;
     }
@@ -399,5 +396,53 @@
         min-height: 30px;
         padding-top: 2px;
         padding-bottom: 2px;
+    }
+    .hs-diets-cont-det {
+        color: #ffc200;
+        margin-top: 100px;
+        width: 100%;
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+        gap: 100px;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+    .hs-cont-details {
+        position: static;       
+        max-width: 100%;
+        width: max-content;
+        background-color: black;
+        padding: 5px 10px 5px 10px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .diets-cont-details {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid #FFC400;
+        padding-bottom: 15px;
+    }
+    .dt{
+        color: khaki;
+    }
+    .hs-cont-details-border {
+        max-width: 100%;
+        width: max-content;
+        height: max-content;
+        border: 1px solid #FFC400;
+    }
+    .rec-hs{
+        font-size: 6rem;
+    }
+    .diet-type{
+        width: 90%;
     }
 }
