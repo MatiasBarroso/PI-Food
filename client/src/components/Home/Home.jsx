@@ -12,7 +12,7 @@ function Home() {
 
   const [screenWidth, setScreenWidth] = useState(0);
   const [page, setPage] = useState(1);
-  const [limit] = useState(5)
+  const limit = 5;
 
   const state = useSelector(state => state)
   const max = Math.round(state.recipes.length / limit);
@@ -37,7 +37,7 @@ function Home() {
         <div className="cont-nav-fil">
           {screenWidth > 430 ? <Nav /> : <NavMobile />}
           <Filters />
-          <Pagination page={page} setPage={setPage} max={max} start={start} end={end}/>
+          <Pagination page={page} setPage={setPage} max={max} start={start} end={end} limit={limit}/>
         </div>
         <div className="container-main-cards">
           <Cards page={page} start={start} end={end}/> 

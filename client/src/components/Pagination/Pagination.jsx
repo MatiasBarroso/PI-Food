@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import './Pagination.css';
 
-const Pagination = ({ page, setPage, max, start, end }) => {
+const Pagination = ({ page, setPage, max, limit }) => {
     
     const [limitPage, setLimitPage] = useState(1)
     const [endPag, setEndPag] = useState(5)
@@ -10,6 +10,7 @@ const Pagination = ({ page, setPage, max, start, end }) => {
         type: false,
         page: 0
     })
+
 
     const state = useSelector(state => state)
 
@@ -22,9 +23,9 @@ const Pagination = ({ page, setPage, max, start, end }) => {
               page: 1
             })
             setLimitPage(1)
-            setEndPag(5)
+            setEndPag(limit)
         }
-    }, [state, setPage])
+    }, [state,limit, setPage])
 
 
     const nextPage = () => {
@@ -34,8 +35,8 @@ const Pagination = ({ page, setPage, max, start, end }) => {
             type: true,
             page: page + 1
           })
-          setLimitPage(limitPage + 5)
-          setEndPag(endPag + 5)
+          setLimitPage(limitPage + limit)
+          setEndPag(endPag + limit)
         }
         if(page < max && page !== endPag){
             setPage(page + 1)
@@ -53,8 +54,8 @@ const Pagination = ({ page, setPage, max, start, end }) => {
               type: true,
               page: page - 1
             })
-            setLimitPage(limitPage - 5)
-            setEndPag(endPag - 5)
+            setLimitPage(limitPage - limit)
+            setEndPag(endPag - limit)
           }
           if(page > 1 && page !== limitPage){
               setPage(page - 1)
