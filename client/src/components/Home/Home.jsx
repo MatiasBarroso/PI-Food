@@ -6,7 +6,8 @@ import NavMobile from "../NavMobile";
 import Filters from "../Filters/Filters";
 import Footer from "../Footer/Footer";
 import Pagination from "../Pagination/Pagination";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllRecipes } from "../../redux/actions";
 
 function Home() {
 
@@ -14,10 +15,17 @@ function Home() {
   const [page, setPage] = useState(1);
   let limit = screenWidth < 730 ? 5 : 12;
 
+  const dispatch = useDispatch()
   const state = useSelector(state => state)
   const max = Math.round(state.recipes.length / limit);
   const start = (page - 1) * limit;
   const end = (page - 1) * limit + limit;
+
+  useEffect(() => {
+    if(state.recipes){
+      dispatch(getAllRecipes())
+    }
+  },[state.recipes, dispatch])
 
 
   const handleScroll = () => {
