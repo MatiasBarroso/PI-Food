@@ -22,7 +22,7 @@ function Home() {
   const end = (page - 1) * limit + limit;
 
   useEffect(() => {
-    if(state.recipes){
+    if(state.recipes.length === 0){
       dispatch(getAllRecipes())
     }
   },[state.recipes, dispatch])
