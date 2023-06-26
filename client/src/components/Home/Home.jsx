@@ -12,7 +12,7 @@ function Home() {
 
   const [screenWidth, setScreenWidth] = useState(0);
   const [page, setPage] = useState(1);
-  const limit = 5;
+  let limit = screenWidth < 730 ? 5 : 12;
 
   const state = useSelector(state => state)
   const max = Math.round(state.recipes.length / limit);

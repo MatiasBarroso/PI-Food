@@ -44,7 +44,7 @@ const NavMobile = () => {
             <SearchBar />
             <div className='cont-links-mobile'>
               <Link to='/recipes' className='link-menu-mobile'>Home</Link>
-              <Link to='/create' className='link-menu-mobile'>Create</Link>
+              <Link to='/recipe/create' className='link-menu-mobile'>Create</Link>
             </div>
           </div>
         </div>
