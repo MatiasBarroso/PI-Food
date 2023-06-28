@@ -62,17 +62,17 @@ export const filterByScore = (scoreOrder) => {
   };
 };
 
-export const filterByType = (diet, status) => {
+export const filterByType = (diet) => {
   return {
     type: FILTER_BY_TYPE,
-    payload: { filter: diet, status: status },
+    payload: diet,
   };
 };
 
 export const createdRecipes = () => {
   return {
     type: RECIPES_CREATED,
-    payload: true,
+    payload: "",
   };
 };
 
