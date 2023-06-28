@@ -17,14 +17,23 @@ const Filters = () => {
   //-------------------------------------------//
 
   const dispatch = useDispatch()
-  const { diets, created } = useSelector(state => state)
+  const { diets, created, filterStatus } = useSelector(state => state)
 
   //         USE EFECTS - DISPATCHES          //
   
   useEffect(() => {
-   dispatch(filterByType(dietsState))
+    if(filterStatus === "no_filter"){
+      console.log('no_filter')
+      dispatch(filterByType(dietsState, "filter"))
+    }
+    if(filterStatus === "filter"){
+      dispatch(filterByType(dietsState, "filter"))
+    }
+    if(filterStatus === "not_found"){
+      dispatch(resetRecipes())
+    }
     
-}, [dispatch, dietsState])
+  }, [dispatch, dietsState])
 
   useEffect(() => {
     if(order !== ""){

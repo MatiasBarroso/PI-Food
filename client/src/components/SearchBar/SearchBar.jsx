@@ -11,7 +11,7 @@ const SearchBar = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-      dispatch(getRecipesByName(nameConverter(searchInput)));
+      if(searchInput !== "") dispatch(getRecipesByName(nameConverter(searchInput)));
     }, [dispatch, searchInput])
   
 

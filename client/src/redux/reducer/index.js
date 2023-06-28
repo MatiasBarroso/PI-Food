@@ -10,9 +10,13 @@ import {
   RESET_RECIPES,
   RECIPES_CREATED,
   CLEAN_STATE,
+  LOADING,
+  CHANGE_STATUS_FILTER,
 } from "../actions";
 
 const initialState = {
+  filterStatus: "no_filter",
+  loading: false,
   created: [],
   recipesCopy: [],
   recipes: [],
@@ -72,24 +76,77 @@ const rootReducer = (state = initialState, action) => {
         const diets = r.diets;
         let items = [];
 
-        action.payload.forEach(function (diet) {
+        action.payload.filter.forEach(function (diet) {
           if (diets.includes(diet)) {
             items.push(diet);
           }
         });
 
-        if (items.length === action.payload.length) {
+        if (items.length === action.payload.filter.length) {
           return true;
         }
       };
 
-      const filterState = state.recipesCopy
+      // const stateCopy = state.recipes;
+
+      let filterState = state.recipesCopy
         .concat(state.created)
         .filter(filterRecipes);
 
+      console.log(filterState);
+      console.log(action.payload.status);
+
+      if (action.payload.status === "no_filter") {
+        console.log(action.payload.status);
+        return {
+          ...state,
+          recipes: state.recipesCopy,
+        };
+      }
+
+      if (action.payload.status === "filter") {
+        if (filterState.length === 0) {
+          return {
+            ...state,
+            filterStatus: "not found",
+            recipes: filterState,
+          };
+        }
+        return {
+          ...state,
+          recipes: filterState,
+        };
+      }
+
+      // if (action.payload.length === 0 && state.filterStatus === "no_filter") {
+      //   console.log("no_filter");
+      //   return;
+
+      // }
+      // if (filterState.length === 0) {
+      //   if(state.filterStatus === "filter" || state.filterStatus === "no_filter"){
+      //     console.log("filter, no_filter");
+      //     // console.log("here");
+      //     return {
+      //       ...state,
+      //       filterStatus: "not found",
+      //       recipes: filterState,
+      //     };
+      //   }
+      // }
+      // if (state.filterStatus === "filter"){
+      //   if(action.payload.length === 0) {
+      //     return {
+      //       ...state,
+      //       filterStatus: "no_filter",
+      //       recipes: state.recipesCopy
+      //     }
+      //   }
+
+      // }
+
       return {
         ...state,
-        recipes: action.payload.length > 0 ? filterState : state.recipesCopy,
       };
 
     case FILTER_BY_ORDER:
@@ -154,6 +211,16 @@ const rootReducer = (state = initialState, action) => {
         recipe: {},
       };
 
+    case LOADING:
+      return {
+        ...state,
+        loading: action.payload,
+      };
+    case CHANGE_STATUS_FILTER:
+      return {
+        ...state,
+        filterStatus: "",
+      };
     default:
       return state;
   }

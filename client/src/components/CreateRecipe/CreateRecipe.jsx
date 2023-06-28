@@ -360,7 +360,9 @@ const CreateRecipe = () => {
             <div className='sec2'>
               <div className='options-cr-cont'>
                 {data.diets?.map((d, index) => <div className='option-selected-create' key={index}>
-                  <p>{d}</p>
+                  <div className='hiddn-cont'>
+                    <p>{d}</p>
+                  </div>
                   <button className='btn-close' type='button' onClick={() => onClose(d)}>x</button>
               </div>)}
             </div>
