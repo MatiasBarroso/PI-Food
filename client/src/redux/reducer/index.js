@@ -72,12 +72,11 @@ const rootReducer = (state = initialState, action) => {
               ),
       };
     case FILTER_BY_TYPE:
-
-      if(action.payload === "reset") {
+      if (action.payload === "reset") {
         return {
           ...state,
           recipes: state.recipesCopy,
-        }
+        };
       }
 
       const filterRecipes = function (r) {
@@ -95,7 +94,6 @@ const rootReducer = (state = initialState, action) => {
         }
       };
 
-
       let filterState = state.recipesCopy
         .concat(state.created)
         .filter(filterRecipes);
@@ -103,20 +101,19 @@ const rootReducer = (state = initialState, action) => {
       console.log(filterState);
       console.log(action.payload);
 
-      if(filterState.length === 0){
+      if (filterState.length === 0) {
         return {
           ...state,
-          filterStatus:"not found"
-        }
-      }
-      
-      return {
-        ...state,
-        filterStatus:"",
-        recipes: filterState,
+          filterStatus: "not found",
+          recipes: [],
+        };
       }
 
-      
+      return {
+        ...state,
+        filterStatus: "",
+        recipes: filterState,
+      };
 
     case FILTER_BY_ORDER:
       let sortedOrder;

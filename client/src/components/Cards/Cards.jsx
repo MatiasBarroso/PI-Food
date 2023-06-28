@@ -32,7 +32,7 @@ const Cards = ({ start, end }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if(state.recipes.length === 0 && !state.loading) dispatch(loading(true))
+    if(state.recipesCopy.length === 0 && !state.loading) dispatch(loading(true))
     if(state.recipes.length > 0 && state.loading) {
       dispatch(changeStatusFilter)
       dispatch(loading(false))
