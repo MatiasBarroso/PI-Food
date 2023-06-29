@@ -76,6 +76,10 @@
     
 }
 
+.hiddn-cont{
+    overflow: hidden;
+}
+
 .back-btn:hover{
     cursor:pointer;
     color: #FFC200;

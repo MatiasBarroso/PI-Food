@@ -1,8 +1,8 @@
 import { Route } from "react-router-dom";
 import "./App.css";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { getAllRecipes, getDiets } from "./redux/actions";
+// import { useDispatch } from "react-redux";
+// import { useEffect } from "react";
+// import { getAllRecipes, getDiets } from "./redux/actions";
 import Home from "./components/Home/Home";
 import LandingPage from "./components/LandingPage/LandingPage";
 import RecipeDetails from "./components/RecipeDetails/RecipeDetails";
@@ -13,12 +13,12 @@ axios.defaults.baseURL = 'https://pi-food-production-ff23.up.railway.app';
 // axios.defaults.baseURL = 'http://localhost:3001/';
 
 function App() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getAllRecipes());
-    dispatch(getDiets());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getAllRecipes());
+  //   dispatch(getDiets());
+  // }, [dispatch]);
 
   return (
     <div className="App">

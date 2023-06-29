@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import "./Filters.css";
 import { useSelector, useDispatch } from 'react-redux';
-import { filterByOrder, filterByScore, filterByType, resetRecipes } from '../../redux/actions';
-import { Link } from 'react-router-dom';
+import { changeStatusFilter, filterByOrder, filterByScore, filterByType, resetRecipes } from '../../redux/actions';
 import { createdRecipes } from '../../redux/actions';
 
 
@@ -10,21 +9,25 @@ const Filters = () => {
 
   //              LOCAL STATES               //
   
-  const [dietsState, setDietsState ] = useState([])
+  const [dietsState, setDietsState ] = useState({filters: [], status: false})
   const [order, setOrder] = useState("")
   const [score, setScore] = useState("")
 
   //-------------------------------------------//
 
   const dispatch = useDispatch()
-  const { diets, created } = useSelector(state => state)
+  const { diets, created, filterStatus, recipes } = useSelector(state => state)
 
   //         USE EFECTS - DISPATCHES          //
   
   useEffect(() => {
-   dispatch(filterByType(dietsState))
-    
-}, [dispatch, dietsState])
+      if(dietsState.status) {
+        if(dietsState.filters.length === 0){
+          return dispatch(filterByType("reset"))
+        }
+        dispatch(filterByType(dietsState.filters));
+      }
+  }, [dispatch, dietsState.status, dietsState.filters])
 
   useEffect(() => {
     if(order !== ""){
@@ -44,11 +47,17 @@ const Filters = () => {
   
   const handleOnChange = (e) => {
     e.preventDefault();
-    if(!dietsState.includes(e.target.value)){
-      setDietsState([
-        ...dietsState,
-        e.target.value
-      ])
+    if(!dietsState.filters.includes(e.target.value)){
+      setDietsState({
+        filters: [...dietsState.filters, e.target.value],
+        status: true,
+    })
+    } 
+    if(!dietsState.filters.includes(e.target.value)){
+      setDietsState({
+        filters: [...dietsState.filters, e.target.value],
+        status: true,
+    })
     } 
   }
 
@@ -58,7 +67,18 @@ const Filters = () => {
   }
   
   const onClose = (e) => { 
-    setDietsState(dietsState.filter(diet => diet !== e.target.value ))
+    if(dietsState.filters.length === 1){
+      dispatch(changeStatusFilter())
+      return setDietsState({
+        ...dietsState,
+        filters:[],
+      })
+    }
+    setDietsState({
+      ...dietsState,
+      filters: dietsState.filters.filter(diet => diet !== e.target.value ),
+      filterStatus:""
+      })
   }
 
   const handleOnChangeScore = (e) => {
@@ -109,8 +129,8 @@ const Filters = () => {
           {/* <button className='btn-filt' value='created' onClick={onClickCreated}>Created Recipes</button>
           <button className='btn-filt' onClick={onClickReset}>Reset</button> */}
       </div>
-      {dietsState.length > 0 && <div className='container-options-selected'>
-      {dietsState.map((d, index) => <div className='option-selected' key={index}>
+      {dietsState.filters.length > 0 && <div className='container-options-selected'>
+      {dietsState.filters.map((d, index) => <div className='option-selected' key={index}>
           <p className='diet-select'>{d}</p>
           <button className='btn-close' type='button' value={d} onClick={(e) => onClose(e)}>x</button>
         </div>)}

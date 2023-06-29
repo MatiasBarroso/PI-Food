@@ -11,6 +11,8 @@ export const FILTER_BY_SCORE = "FILTER_BY_SCORE";
 export const RESET_RECIPES = "RESET_RECIPES";
 export const RECIPES_CREATED = "RECIPES_CREATED";
 export const CLEAN_STATE = "CLEAN_STATE";
+export const LOADING = "LOADING";
+export const CHANGE_STATUS_FILTER = "CHANGE_STATUS_FILTER";
 
 export const getAllRecipes = () => (dispatch) => {
   return axios("/recipes").then((res) => {
@@ -70,7 +72,7 @@ export const filterByType = (diet) => {
 export const createdRecipes = () => {
   return {
     type: RECIPES_CREATED,
-    payload: true,
+    payload: "",
   };
 };
 
@@ -78,5 +80,19 @@ export const cleanUpState = (id) => {
   return {
     type: CLEAN_STATE,
     payload: { id: id, state: "recipes" },
+  };
+};
+
+export const loading = (loading) => {
+  return {
+    type: LOADING,
+    payload: loading,
+  };
+};
+
+export const changeStatusFilter = (payload) => {
+  return {
+    type: CHANGE_STATUS_FILTER,
+    payload: payload,
   };
 };

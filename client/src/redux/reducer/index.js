@@ -10,9 +10,13 @@ import {
   RESET_RECIPES,
   RECIPES_CREATED,
   CLEAN_STATE,
+  LOADING,
+  CHANGE_STATUS_FILTER,
 } from "../actions";
 
 const initialState = {
+  filterStatus: "",
+  loading: false,
   created: [],
   recipesCopy: [],
   recipes: [],
@@ -68,6 +72,13 @@ const rootReducer = (state = initialState, action) => {
               ),
       };
     case FILTER_BY_TYPE:
+      if (action.payload === "reset") {
+        return {
+          ...state,
+          recipes: state.recipesCopy,
+        };
+      }
+
       const filterRecipes = function (r) {
         const diets = r.diets;
         let items = [];
@@ -83,13 +94,25 @@ const rootReducer = (state = initialState, action) => {
         }
       };
 
-      const filterState = state.recipesCopy
+      let filterState = state.recipesCopy
         .concat(state.created)
         .filter(filterRecipes);
 
+      console.log(filterState);
+      console.log(action.payload);
+
+      if (filterState.length === 0) {
+        return {
+          ...state,
+          filterStatus: "not found",
+          recipes: [],
+        };
+      }
+
       return {
         ...state,
-        recipes: action.payload.length > 0 ? filterState : state.recipesCopy,
+        filterStatus: "",
+        recipes: filterState,
       };
 
     case FILTER_BY_ORDER:
@@ -154,6 +177,16 @@ const rootReducer = (state = initialState, action) => {
         recipe: {},
       };
 
+    case LOADING:
+      return {
+        ...state,
+        loading: action.payload,
+      };
+    case CHANGE_STATUS_FILTER:
+      return {
+        ...state,
+        filterStatus: "",
+      };
     default:
       return state;
   }

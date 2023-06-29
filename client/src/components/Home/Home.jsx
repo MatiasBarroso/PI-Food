@@ -21,12 +21,6 @@ function Home() {
   const start = (page - 1) * limit;
   const end = (page - 1) * limit + limit;
 
-  useEffect(() => {
-    if(state.recipes.length === 0){
-      dispatch(getAllRecipes())
-    }
-  },[state.recipes, dispatch])
-
 
   const handleScroll = () => {
     setScreenWidth(window.innerWidth);

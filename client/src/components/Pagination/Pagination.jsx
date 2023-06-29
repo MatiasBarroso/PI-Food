@@ -113,7 +113,8 @@ const Pagination = ({ page, setPage, max, limit }) => {
     <div className={`pagination ${scrollPosition === 0 ? '' : ' nav-scroll'}`}>
         <button className='pag-pr-nx' onClick={prevPage} value={limitPage}>&#60;</button>
             {buttons.length > 0 && buttons.length <= 10 ? buttons : buttons?.slice(limitPage - 1, endPag)}
-        <p className='count-pagination'>DE {max === 0 && buttons.length > 0 ? 1 : max}</p>
+            <p className='count-pagination'>DE {state.recipes.length > 0 && state.recipes.length < limit ? 1 : max}</p>
+        {/* <p className='count-pagination'>DE {max === 0 && buttons.length > 0 ? 1 : max}</p> */}
         <button className='pag-pr-nx' onClick={nextPage} value='next'>&#62;</button>
     </div>
   )
