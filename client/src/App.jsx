@@ -9,8 +9,8 @@ import RecipeDetails from "./components/RecipeDetails/RecipeDetails";
 import CreateRecipe from "./components/CreateRecipe/CreateRecipe";
 import axios from "axios";
 
-// axios.defaults.baseURL = 'https://pi-food-production-ff23.up.railway.app';
-axios.defaults.baseURL = 'http://localhost:3001/';
+axios.defaults.baseURL = 'https://pi-food-production-ff23.up.railway.app';
+// axios.defaults.baseURL = 'http://localhost:3001/';
 
 function App() {
   // const dispatch = useDispatch();
